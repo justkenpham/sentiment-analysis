@@ -28,7 +28,8 @@ function LoginForm({Login, error}) {
                     <label htmlFor="password">Password:</label>
                     <input type="password" name="password" id="password"
                     onChange={e => setDetails({...details, password: e.target.value})} value ={details.password}/>
-                    />
+
+                    
                 </div>
                 <input type="submit" value="LOGIN"/>
 
