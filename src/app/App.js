@@ -22,7 +22,7 @@ function App() {
 
     } else {
       console.log("Details do not match!");
-      setError("Details donot match!");
+      setError("Details don't match!");
 
     }
   
