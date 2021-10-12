@@ -21,30 +21,29 @@ function App() {
       });
 
     } else {
-      console.log("Details do not match!");
       setError("Details don't match!");
-
     }
-  
+
   }
 
   const Logout = () => {
     setUser({name: "",email: ""});
   }
+
   return (
     <div className="App">
       {(user.email != "") ? (
         <div className="welcome">
-          <h1>This page is only to show that the user has successfully logged in</h1>
+          <h1>Successfully logged in</h1>
           <h2>User name: <span>{user.name}</span></h2>
           <button onClick={Logout}>Logout</button>
         </div>
       ) : (
         <LoginForm Login={Login} error={error}/>
-      )
-    }
+      ) }
     </div>
   );
+
 }
 
 export default App;

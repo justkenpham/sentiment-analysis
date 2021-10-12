@@ -1,5 +1,4 @@
-import React, {useState} from 'react' //rfce + Enter
-
+import React, {useState} from 'react'
 function LoginForm({Login, error}) {
     const [details, setDetails] = useState({name:"", email:"", password:""});
 
@@ -31,7 +30,9 @@ function LoginForm({Login, error}) {
 
                     
                 </div>
-                <input type="submit" value="LOGIN"/>
+                <input type="submit" value="LOGIN" />
+                <input type="submit" value="SIGN UP"/>
+                
 
             </div>
         </form>
