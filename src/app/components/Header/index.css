@@ -1,0 +1,23 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid red; */
+    align-items: center;
+    /* padding: 10px; */
+}
+
+.header__input{
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0.5px solid grey;
+    padding-left: 10px;
+    outline-color: #006AFE;
+}
+
+.header__name{
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #006AFE;
+}
