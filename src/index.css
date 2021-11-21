@@ -1,22 +1,22 @@
-*{
+/* *{
     margin : 0;
     padding: 0;
     box-sizing: border-box;
     font-family: monsterrat, sans-serif;
-}
+} */
 input, button{
     appearance: none;
     background: none;
     border: none;
     outline: none;
 }
-.App{
+/* .App{
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #54585e; */
-}
+} */
+
 form{
     display: block;
     position: relative;
