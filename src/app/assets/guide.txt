@@ -1,1 +1,0 @@
-assets is the place to store all images file
