@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
     res.json({ message: "This is what the fuck bro." });
 });
 
-const postRouter = require('./app/routes/Comments');
-app.use("/comments", postRouter);
+// const postRouter = require('./app/routes/Comments');
+// app.use("/comments", postRouter);
 
 
 // set port, listen for requests
