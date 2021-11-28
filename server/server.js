@@ -27,7 +27,11 @@ app.listen(PORT, () => {
 });
 
 const db = require("./app/models");
-db.sequelize.sync();
+db.sequelize.sync().then((data) =>{
+    console.log("Successfully!!");
+}).catch((err) => {
+    console.log("Failed!!");
+});
 
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
