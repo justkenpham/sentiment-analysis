@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import MainRoute from "./routes/MainRoute";
 import React, { useState } from "react";
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/Register/RegisterForm";
 
 function App() {
   const adminUser = {
@@ -36,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <MainRoute />
       {user.email != "" ? (
         <div className="welcome">
@@ -48,6 +49,7 @@ function App() {
         </div>
       ) : (
         <LoginForm Login={Login} error={error} />
+        // <RegisterForm />
       )}
     </div>
   );

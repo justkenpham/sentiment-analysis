@@ -1,21 +1,22 @@
-/* *{
+*{
     margin : 0;
     padding: 0;
     box-sizing: border-box;
     font-family: monsterrat, sans-serif;
-} */
+}
 input, button{
     appearance: none;
     background: none;
     border: none;
     outline: none;
 }
-/* .App{
+.App{
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-} */
+    background-image: linear-gradient(to top right, #7FFFD4, #A52A2A);
+}
 
 form{
     display: block;
@@ -30,7 +31,9 @@ form::after{
     right: -5px;
     bottom: -5px;
     z-index: 1;
-    background-image: linear-gradient(to top right, #7FFFD4, #A52A2A);
+    /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
+    background-color: white;
+    border-radius: 5px;
 }
 form .form-inner{
     position: relative;
@@ -70,6 +73,7 @@ form .form-inner .form-group input{
     background-color:#f0ecec;
     border-radius: 8px;
     transition: 0.5s;
+    margin: 10px;
 }
 form .form-inner .form-group input:focus{
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
@@ -88,7 +92,7 @@ form .form-inner input[type="submit"],
     font-weight: 700;
     cursor: pointer;
     width: 150px;
-    margin-top: 10px;
+    margin: 10px;
 }
 form .form-inner input[type="submit"]:hover,
 .welcome button:hover{
@@ -112,3 +116,4 @@ form .form-inner input[type="submit"]:hover,
     color:#A52A2A;
     font-weight: 700;
 }
+
