@@ -1,0 +1,1 @@
+"constants" is the place to store all variables, values that will not change and be used across the app

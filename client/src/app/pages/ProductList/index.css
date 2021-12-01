@@ -1,0 +1,38 @@
+.pl-filter{
+    /* border: 1px solid salmon; */
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: left;
+    align-items: center;   
+}
+.pl-filter > div > button{
+    border: 0.5px solid grey;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pl-filter > p{
+    font-weight: bold;
+}
+
+.pl-list{
+    display: flex;
+    min-height: calc(100vh - 11.25rem);
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: 0.3125rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.pl-list__product{
+    border: 1px solid grey;
+    box-sizing: border-box;
+    width: 16.66667%;
+}
