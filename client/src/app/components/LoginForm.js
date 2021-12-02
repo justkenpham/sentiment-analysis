@@ -45,7 +45,7 @@ function LoginForm({ Login, error }) {
               setDetails({ ...details, password: e.target.value })
             }
             value={details.password}
-            placeholder="Please enter your password"
+            placeholder="*****************"
           />
         </div>
         <input type="submit" value="LOGIN" />

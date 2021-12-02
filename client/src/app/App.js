@@ -48,8 +48,8 @@ function App() {
           <button onClick={Logout}>Logout</button>
         </div>
       ) : (
-        <LoginForm Login={Login} error={error} />
-        // <RegisterForm />
+        // <LoginForm Login={Login} error={error} />
+        <RegisterForm />
       )}
     </div>
   );
