@@ -23,6 +23,8 @@ app.get("/", (req, res) => {
 const reviewRoute = require('./app/routes/review.route');
 app.use("/reviews", reviewRoute);
 
+const productRoute = require('./app/routes/product.route')
+app.use("/products", productRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
