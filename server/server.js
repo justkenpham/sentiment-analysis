@@ -23,6 +23,11 @@ app.get("/", (req, res) => {
 const reviewRoute = require('./app/routes/review.route');
 app.use("/reviews", reviewRoute);
 
+const loginRoute = require('./app/routes/login.route');
+app.use("/login", loginRoute);
+
+const registerRoute = require('./app/routes/register.route');
+app.use("/register", registerRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
