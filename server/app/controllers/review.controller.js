@@ -30,8 +30,8 @@ exports.postReview = async (req, res) => {
     let insert_data = [review_text, review_time, overall, user_id, product_id]
     console.log(insert_data)
     //Query
-    let query = "INSERT INTO review (`review_text`,`review_time`,`overall`, `user_id`,`product_id`) VALUES (?)"
-    db.query(query, req.body, (error, result) => {
+    let query = "INSERT INTO review (`review_text`,`review_time`,`overall`, `user_id`,`product_id`) VALUES (?,?,?,?,?)"
+    db.query(query, insert_data, (error, result) => {
         if (error) {
             return res.status(500).json({
                 message: "Unsuccesfully post review to database",
