@@ -1,9 +1,11 @@
 export class Product{
-    constructor(productImage, productName, productPrice, productScore, productRating){
-        this.productImage = productImage;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.productScore = productScore;
-        this.productRating = productRating;
+    constructor(product_id, product_name, description, price, image, rating, category_id){
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.rating = rating;
+        this.category_id = category_id;
     }
 }
