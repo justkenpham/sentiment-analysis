@@ -26,6 +26,9 @@ app.use("/reviews", reviewRoute);
 const productRoute = require('./app/routes/product.route')
 app.use("/products", productRoute);
 
+const authRoute = require('./app/routes/auth.route')
+app.use("/auth", authRoute);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 
