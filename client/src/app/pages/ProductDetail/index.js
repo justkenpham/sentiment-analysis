@@ -6,6 +6,8 @@ import tw from "../../assets/tw.png"
 import star from '../../assets/icon/star.png';
 import starFull from '../../assets/icon/star-full.png';
 import InputSection from "../../components/Comments/InputSection";
+import { getReviewFromBE, postReviewToBE } from "../../utils/review.utils";
+import { getProductDetail, getAllProducts, searchProduct } from "../../utils/product.utils";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 const PathName = window.location.href;
@@ -21,25 +23,35 @@ const postData = {
 
 const getReviewRoute = "http://localhost:8080/reviews/get-reviews/"
 const postReviewRoute = "http://localhost:8080/reviews/post-reviews/";
-
+const getProductDetailRoute = "http://localhost:8080/products/search/"
 const ProductDetail = (props) => {
 
   const [productId, setProductId] = useState(11);
   const [reviews, setReviews] = useState();
   const [currentReview, setCurrentReview] = useState()
+  const [productDetail, setProductDetail] = useState()
+  // const getReviewFromBE = async () => {
+  //   const response = await axios.get(getReviewRoute + productId)
+  //   console.log("response:", response)
+  //   setReviews(response.data)
+  // }
 
-  const getReviewFromBE = async () => {
-    const response = await axios.get(getReviewRoute + productId)
-    console.log("response:", response)
-    setReviews(response.data)
-  }
+  // const postReviewToBE = async (review) => {
+  //   const post = await axios.post(postReviewRoute, postData).then(res => console.log(res))
+  //   console.log("post successfully")
+  // }
 
-  const postReviewToBE = async (review) => {
-    const post = await axios.post(postReviewRoute, postData).then(res => console.log(res))
-    console.log("post successfully")
-  }
+  // const getProductDetail = async () => {
+  //   const response = await axios.get(getProductDetailRoute + productId)
+  //   console.log("response:", response)
+  //   setReviews(response.data)
+  // }
   useEffect(() => {
-    getReviewFromBE(11);
+    const reviews = getReviewFromBE(productId);
+    const productDetail = getProductDetail(productId);
+    setReviews(reviews)
+    setProductDetail(productDetail)
+
   }
 
     , []);
@@ -98,7 +110,7 @@ const ProductDetail = (props) => {
         </div>
       </div>
       <InputSection />
-      <button onClick={postReviewToBE}>Comments</button>
+      <button onClick={() => postReviewToBE(postData)}>Comments</button>
     </div>
   );
 };

@@ -33,3 +33,19 @@ module.exports.getProductDetail = async (req, res) => {
         }
     })
 }
+
+module.exports.getAllProduct = async (req, res) => {
+
+    let query = `SELECT * FROM product`
+    db.query(query, async (err, result) => {
+        if (err) {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving all products."
+            });
+        }
+        else {
+            return res.send(result)
+        }
+    })
+}
