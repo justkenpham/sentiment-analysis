@@ -1,5 +1,4 @@
 const db = require('../models/database')
-const sqlQuery = require('../models/mysqlQuery')
 //GET
 module.exports.getReview = async (req, res) => {
     console.log("request params  ", req.param)
