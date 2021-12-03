@@ -116,4 +116,7 @@ form .form-inner input[type="submit"]:hover,
     color:#A52A2A;
     font-weight: 700;
 }
+.error{
+    color: red;
+}
 
