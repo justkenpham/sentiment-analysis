@@ -1,11 +1,18 @@
+.pl-container{
+    padding: 50px;
+    width: 100vw;
+}
+
 .pl-filter{
     /* border: 1px solid salmon; */
     display: flex;
     flex-direction: row;
-    padding-left: 10px;
-    padding-right: 10px;
-    justify-content: left;
+    /* justify-content: left; */
     align-items: center;   
+}
+.pl-filter > p{
+    margin-right: 10px;
+    white-space: nowrap;
 }
 .pl-filter > div > button{
     border: 0.5px solid grey;
@@ -15,6 +22,54 @@
     height: 30px;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.pl-select > select{
+    border-radius: 5px;
+    outline: none;
+    border: 0.5px solid rgba(0,0,0,.4);
+    height: 30px;
+    padding: 5px;
+    width: 150px;
+    margin-right: 10px;
+}
+
+.pl-select > select:focus, .pl-select > select:active{
+    outline: 0.5px solid #f1425d;
+    border: 0.5px solid #f1425d;
+}
+
+.pl-btn{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.pl-btn__login{
+    font-size: 14px;
+    display: block;
+    width: 100px;
+    padding: 10px 15px;
+    background-color:#f1425d;
+    border-radius: 8px;
+    transition: 0.5s;
+    margin: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.pl-btn__signup{
+    font-size: 14px;
+    display: block;
+    width: 100px;
+    padding: 10px 15px;
+    background-color:white;
+    border-radius: 8px;
+    transition: 0.5s;
+    margin: 10px;
+    cursor: pointer;
+    color: #f1425d;
+    border: 0.5px solid #f1425d;
 }
 
 .pl-filter > p{
@@ -27,12 +82,44 @@
     flex-wrap: wrap;
     align-content: flex-start;
     padding-top: 0.3125rem;
-    padding-left: 10px;
-    padding-right: 10px;
+
 }
 
 .pl-list__product{
-    border: 1px solid grey;
+    border: 0.5px solid rgba(0,0,0,.05);
     box-sizing: border-box;
-    width: 16.66667%;
+    width: 15%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 10%);
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+
+.pl-list__product__name, .pl-list__product__under-name{
+    display: flex;
+    align-items: flex-start;
+}
+
+.pl-list__product__under-name{
+    align-items: center;
+    justify-content: start;
+}
+
+.pl-list__product__name{
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: rgba(0,0,0,.87);
+}
+
+.pl-list__product__under-name__price{
+    flex: 2;
+    text-align: left;
+    color: #f1425d;
+}
+.pl-list__product__under-name__rating{
+    flex: 1;
+    text-align: right;
 }
