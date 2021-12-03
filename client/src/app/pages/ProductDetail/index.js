@@ -1,51 +1,104 @@
-// src/app/pages/productdetail/index.js
-
 import React from "react";
-import "./index.css";
+import "./product-detail.css";
 import logo from "../../assets/logo.svg";
-
+import fb from "../../assets/fb.png"
+import tw from "../../assets/tw.png"
 import star from '../../assets/icon/star.png';
 import starFull from '../../assets/icon/star-full.png';
 import InputSection from "../../components/Comments/InputSection";
-import { exampleProduct } from "../../constants/Product";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+const PathName = window.location.href;
+
+const postData = {
+  review_text: "This product is awesome",
+  review_time: "2014-01-01 13:00:00",
+  overall: "5.0",
+  user_id: "7",
+  product_id: 11
+
+}
+
+const getReviewRoute = "http://localhost:8080/reviews/get-reviews/"
+const postReviewRoute = "http://localhost:8080/reviews/post-reviews/";
 
 const ProductDetail = (props) => {
-  
+
+  const [productId, setProductId] = useState(11);
+  const [reviews, setReviews] = useState();
+  const [currentReview, setCurrentReview] = useState()
+
+  const getReviewFromBE = async () => {
+    const response = await axios.get(getReviewRoute + productId)
+    console.log("response:", response)
+    setReviews(response.data)
+  }
+
+  const postReviewToBE = async (review) => {
+    const post = await axios.post(postReviewRoute, postData).then(res => console.log(res))
+    console.log("post successfully")
+  }
+  useEffect(() => {
+    getReviewFromBE(11);
+  }
+
+    , []);
+
   return (
-    <div className="product-detail">
-      <div className="product-detail__body">
-        <div className="product-detail__body__img">
-          <img src={logo} />
+    <div class="product-detail">
+      <div class="background"></div>
+      <div class="mainpage">
+        <div class="product_image">
+          <img src={logo} alt="" />
         </div>
-        <div className="product-detail__body__content">
-          <div className="product-detail__body__content__general">
-            <div className="product-detail__body__content__general__main">
-              <h3>{exampleProduct.productName}</h3>
-              <h1>{exampleProduct.productPrice}</h1>
+        <div class="product_rightSide">
+          <p class="block_model">
+            <span class="block_model__text">ID: </span>
+            <span class="block_model__number">000001</span>
+          </p>
+          <div class="block_product">
+            <h2 class="block_name block_name__addName">Product Name</h2>
+            <p class="block_product__advantagesProduct">Category</p>
+            <div class="block_price">
+              <p class="block_price__currency">$999.99</p>
+              <p class="block_price__shipping">Shipping and taxes extra</p>
             </div>
-            <div className="product-detail__body__content__general__sentiment">
-              <h1>{exampleProduct.productScore}</h1>
-              <img src={exampleProduct.productRating}/>
+            <div class="block_descriptionInformation">
+              <span>Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum{" "}
+              </span>
+            </div>
+            <div class="block_rating">
+              <img src={starFull} />
               <img src={starFull} />
               <img src={starFull} />
               <img src={star} />
               <img src={star} />
+              <span class="block_rating__average">3.00</span>
+              <span class="block_rating__reviews">
+                <a href="#AnswerSection">(1 reviews)</a>
+              </span>
             </div>
-          </div>
-          <div className="product-detail__body__content__cta">
-            <div>Add to cart</div>
-            <div>Buy now!</div>
-          </div>
-          <div className="product-detail__body__content__description">
-            <p>
-              Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem
-              ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum
-              Lorem ispum{" "}
-            </p>
+            <div class="button">
+              <button class="button button_addToCard">Buy Now
+              </button>
+              <br></br>
+              <span class="text">Like it? Share It!</span>
+              <div class="share">
+                <ul class="social-networks list-unstyled">
+                  <li>
+                    <img src={fb} alt="" />
+                    <a href={"https://www.facebook.com/sharer?u=" + PathName} title="facebook"><i class="icon icon-facebook"></i>Facebook</a></li>
+                  <li>
+                    <img src={tw} alt="" />
+                    <a href={"http://twitter.com/intent/tweet?text=My Product&url=" + PathName} title="Twitter"><i class="icon icon-twitter"></i>Twitter</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <InputSection/>
+      <InputSection />
+      <button onClick={postReviewToBE}>Comments</button>
     </div>
   );
 };
