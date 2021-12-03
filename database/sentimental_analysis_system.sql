@@ -114,7 +114,7 @@ CREATE TABLE `review` (
   `review_text` varchar(3200) NOT NULL,
   `review_time` datetime NOT NULL,
   `overall` float NOT NULL,
-  `tempOvr` float NOT NULL,
+  `tempOvr` float NOT NULL DEFAULT 0,
   `user_id` int NOT NULL,
   `product_id` int NOT NULL,
   PRIMARY KEY (`review_id`),
