@@ -4,13 +4,14 @@ import { exampleProduct } from '../../constants/Product';
 
 import {allProducts} from '../../data/Product.js'
 
+
 import "./index.css"
 
 const ProductList = props => {
     
-
     const onViewProduct = () => {
         props.history.push("/product-detail")
+
     }
 
     // useEffect(() => getAllProducts(),[])
@@ -52,7 +53,7 @@ const ProductList = props => {
                             </div>
                         </div>
                     </div>
-                ) )}
+                ))}
             </section>
         </div>
     )

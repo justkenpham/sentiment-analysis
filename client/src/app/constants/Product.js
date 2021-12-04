@@ -3,9 +3,11 @@ import starFull from '../assets/icon/star-full.png';
 import logo from "../assets/logo.svg";
 
 export const exampleProduct = new Product(
-    logo,
+    "001",
     "Hà Tiến Đạt",
+    "A genius",
     "$999",
+    logo,
     "Bad",
-    starFull
+    "Book"
 )
