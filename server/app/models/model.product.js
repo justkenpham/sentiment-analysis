@@ -1,5 +1,5 @@
 module.export = (sequelize, Datatype) =>{
-    const Product = sequelize.define("Product", {
+    const Product = sequelize.define("product", {
         product_id: {
             type: Datatype.Integer,
             allowNull: false,

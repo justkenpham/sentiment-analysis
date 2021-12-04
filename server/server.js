@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-
+const db = require("./app/models/database")
 const app = express();
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://localhost:3000"
 };
 
 app.use(cors(corsOptions));
@@ -20,27 +20,33 @@ app.get("/", (req, res) => {
     res.json({ message: "This is what the fuck bro." });
 });
 
-// const postRouter = require('./app/routes/Comments');
-// app.use("/comments", postRouter);
+const reviewRoute = require('./app/routes/review.route');
+app.use("/reviews", reviewRoute);
 
+
+const loginRoute = require('./app/routes/login.route');
+app.use("/login", loginRoute);
+
+const registerRoute = require('./app/routes/register.route');
+app.use("/register", registerRoute);
+
+const productRoute = require('./app/routes/product.route')
+app.use("/products", productRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 
-const db = require("./app/models");
-db.sequelize.sync().then(
-    () => {
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}.`);
-        })
-    }
-).catch((err) => {
-    console.log(`Failed to run on port ${PORT}.`);
-    console.log(err)
-});
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+})
 
-// // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+
+db.connect((err, res) => {
+    if (err) {
+        console.log("|| Database failed to connect...")
+        console.log(error);
+    } else {
+        console.log("|| Database successfully connected!!!")
+    }
+})
 
