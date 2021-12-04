@@ -1,14 +1,57 @@
+.logo {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.logo > img {
+    margin-right: 5px;
+    width: 50px;
+}
+
 .header{
+    background-color: #000;
     display: flex;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 3rem;
     flex-direction: row;
     /* border: 1px solid red; */
     align-items: center;
     /* padding: 10px; */
+    z-index: 99;
+}
+
+.container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.header_nav{
+    display:flex;
+    margin-left: auto;
+    margin-right: 0px;
+    color: rgb(255, 255, 255);
+}
+
+li {
+    font-weight: 500;
+    position: relative;
+    font-size: 14px;
+    display:inline; 
+    justify-content: space-between;
+    text-align: right;
+    padding-left: 20px;
 }
 
 .header__input{
     width: 500px;
-    height: 30px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 10px;
     border-radius: 5px;
     border: 0.5px solid grey;
     padding-left: 10px;
@@ -17,7 +60,6 @@
 
 .header__name{
     font-weight: bold;
-    margin-right: 10px;
-    margin-left: 10px;
-    color: #006AFE;
+    color: #ffffff;
+    font-size: 14px;
 }
