@@ -39,7 +39,7 @@ function App() {
     <div className="App">
       {/* <Header /> */}
       <MainRoute />
-      {user.email != "" ? (
+      {/* {user.email != "" ? (
         <div className="welcome">
           <h1>Successfully logged in</h1>
           <h2>
@@ -48,9 +48,9 @@ function App() {
           <button onClick={Logout}>Logout</button>
         </div>
       ) : (
-        // <LoginForm Login={Login} error={error} />
-        <RegisterForm />
-      )}
+        <LoginForm Login={Login} error={error} />
+        // <RegisterForm />
+      )} */}
     </div>
   );
 }

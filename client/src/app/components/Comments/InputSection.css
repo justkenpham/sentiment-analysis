@@ -3,6 +3,7 @@
     /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
+    background-color: #000;
 }
 .product-detail__comment>div{
     /* flex-direction: row; */
@@ -14,14 +15,14 @@
     border-radius: 20px;
     width: 40px;
     height: 40px;
-    margin-left: 20px;
 }
 .product-detail__comment__input>input{
     flex: 1;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: 10px;
-    width: 500px;
+    width: 100%;
     padding-left: 10px;
     outline-color: #006AFE;
+    background-color: white;
 }

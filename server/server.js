@@ -4,7 +4,7 @@ const db = require("./app/models/database")
 const app = express();
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://localhost:3000"
 };
 
 app.use(cors(corsOptions));
@@ -23,11 +23,15 @@ app.get("/", (req, res) => {
 const reviewRoute = require('./app/routes/review.route');
 app.use("/reviews", reviewRoute);
 
+
 const loginRoute = require('./app/routes/login.route');
 app.use("/login", loginRoute);
 
 const registerRoute = require('./app/routes/register.route');
 app.use("/register", registerRoute);
+
+const productRoute = require('./app/routes/product.route')
+app.use("/products", productRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

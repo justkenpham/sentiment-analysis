@@ -8,7 +8,7 @@ module.exports.getReview = async (req, res) => {
         if (err) {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving reviews."
             });
         }
         else {
@@ -19,13 +19,6 @@ module.exports.getReview = async (req, res) => {
 
 exports.postReview = async (req, res) => {
     console.log("request body", req.body)
-    //Parse data into string 
-    // let review_text = JSON.stringify(req.body.review_text)
-    // let review_time = JSON.stringify(req.body.review_time)
-    // let overall = JSON.stringify(req.body.overall)
-    // let user_id = JSON.stringify(req.body.user_id)
-    // let product_id = JSON.stringify(req.body.product_id)
-
     const { review_text, review_time, overall, user_id, product_id } = req.body
     let insert_data = [review_text, review_time, overall, user_id, product_id]
     console.log(insert_data)

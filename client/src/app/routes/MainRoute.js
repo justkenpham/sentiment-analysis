@@ -7,13 +7,14 @@ import ProductList from "../pages/ProductList";
 import LoginForm from "../components/LoginForm";
 
 const MainRoute = () => {
-    return(
+    return (
         <Router>
             <Switch>
+                <Route path="/homepage" component={HomePage} />
                 <Route path="/product-detail" component={ProductDetail} />
-                <Route path="/product-list" component={ProductList}/>
-                <Route path="/login" component={LoginForm}/>
-                <Route path="/" component={HomePage} />
+                <Route path="/product-list" component={ProductList} />
+                <Route path="/login" component={LoginForm} />
+
             </Switch>
         </Router>
     )
