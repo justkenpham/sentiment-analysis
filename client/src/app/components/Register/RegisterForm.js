@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
     const adminUser = {
         name: "phong",
         password: "123"
@@ -8,9 +8,12 @@ export default function RegisterForm() {
     const [details, setDetails] = useState({ name: "", password: "", confirmPass: "" });
     const [user, setUser] = useState({ name: "", password: "" });
     const [error, setError] = useState("");
+    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     const Signup = (details) => {
-        if (
+        if (format.test(details.name))
+            setError("Username must not contain special characters");
+        else if (
             details.name != adminUser.name &&
             details.password == details.confirmPass
         ) {
@@ -67,7 +70,7 @@ export default function RegisterForm() {
                 <input type="submit" value="SIGN UP" />
             </div>
             <div>
-                {user.name != "" ? (console.log("Sign up successfully")) : null}
+                {user.name != "" ? props.history.push("/login") : null}
             </div>
         </form>
     )
