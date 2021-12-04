@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      {/* <Header/> */}
       <MainRoute />
       {/* {user.email != "" ? (
         <div className="welcome">
