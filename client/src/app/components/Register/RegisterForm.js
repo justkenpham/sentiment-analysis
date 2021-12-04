@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { postRegistrationToBE } from '../../utils/auth.utils';
 export default function RegisterForm() {
     const adminUser = {
         name: "phong",
@@ -10,6 +10,8 @@ export default function RegisterForm() {
     const [error, setError] = useState("");
 
     const Signup = (details) => {
+        const { name, password, confirmPass } = details
+        console.log(postRegistrationToBE(name, password, confirmPass))
         if (
             details.name != adminUser.name &&
             details.password == details.confirmPass
@@ -28,6 +30,7 @@ export default function RegisterForm() {
 
         Signup(details);
     };
+    const { name, password, confirmPass } = details
 
     return (
         <form onSubmit={submitHandler}>
