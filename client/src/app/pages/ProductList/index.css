@@ -11,6 +11,7 @@
     flex-direction: row;
     /* justify-content: left; */
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .pl-filter>p {
@@ -42,39 +43,6 @@
 .pl-select>select:focus,
 .pl-select>select:active {
     outline: 0.5px solid #f1425d;
-    border: 0.5px solid #f1425d;
-}
-
-.pl-btn {
-    display: flex;
-    flex-direction: row;
-
-}
-
-.pl-btn__login {
-    font-size: 14px;
-    display: block;
-    width: 100px;
-    padding: 10px 15px;
-    background-color: #f1425d;
-    border-radius: 8px;
-    transition: 0.5s;
-    margin: 10px;
-    cursor: pointer;
-    color: white;
-}
-
-.pl-btn__signup {
-    font-size: 14px;
-    display: block;
-    width: 100px;
-    padding: 10px 15px;
-    background-color: white;
-    border-radius: 8px;
-    transition: 0.5s;
-    margin: 10px;
-    cursor: pointer;
-    color: #f1425d;
     border: 0.5px solid #f1425d;
 }
 

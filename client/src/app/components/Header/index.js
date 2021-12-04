@@ -21,6 +21,10 @@ const Header = (props) => {
                         <i className="fas fa-search"></i>      
                 </a>
             </div>
+            <div className="pl-btn">    
+                <div className="pl-btn__login">Login</div>
+                <div className="pl-btn__signup">Signup</div>
+            </div>
         </div>
     )
 }

@@ -7,6 +7,7 @@
     background-color: #f1425c75;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .ctn__info{
@@ -86,4 +87,37 @@
     100% {
         transform: skew(0deg, 0deg);
     }
+}
+
+.pl-btn {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.pl-btn__login {
+    font-size: 14px;
+    display: block;
+    width: 100px;
+    padding: 10px 15px;
+    background-color: #f1425d;
+    border-radius: 8px;
+    transition: 0.5s;
+    margin: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.pl-btn__signup {
+    font-size: 14px;
+    display: block;
+    width: 100px;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 8px;
+    transition: 0.5s;
+    margin: 10px;
+    cursor: pointer;
+    color: #f1425d;
+    border: 0.5px solid #f1425d;
 }
