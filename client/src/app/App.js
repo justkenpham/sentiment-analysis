@@ -1,11 +1,13 @@
 import "./App.css";
 import MainRoute from "./routes/MainRoute";
 import React, { useState } from "react";
+import Header from './components/Header/index'
 
 function App() {
 
   return (
     <div className="App">
+      <Header/>
       <MainRoute />
       {/* {user.email != "" ? (
         <div className="welcome">
