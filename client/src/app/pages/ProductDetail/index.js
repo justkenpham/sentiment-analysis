@@ -21,9 +21,6 @@ const postData = {
 
 }
 
-const getReviewRoute = "http://localhost:8080/reviews/get-reviews/"
-const postReviewRoute = "http://localhost:8080/reviews/post-reviews/";
-const getProductDetailRoute = "http://localhost:8080/products/search/"
 const ProductDetail = (props) => {
 
   const [productId, setProductId] = useState(11);
