@@ -1,28 +1,40 @@
 import React, { useState } from 'react';
 import { postRegistrationToBE } from '../../utils/auth.utils';
-export default function RegisterForm() {
-    const adminUser = {
-        name: "phong",
-        password: "123"
-    };
+export default function RegisterForm(props) {
+
     const [details, setDetails] = useState({ name: "", password: "", confirmPass: "" });
     const [user, setUser] = useState({ name: "", password: "" });
     const [error, setError] = useState("");
     var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
-    const Signup = (details) => {
+    const Signup = async (details) => {
         if (format.test(details.name))
             setError("Username must not contain special characters");
+
         else if (
-            details.name != adminUser.name &&
-            details.password == details.confirmPass
-        ) {
-            setUser({
-                name: details.name,
-                password: details.password,
-            });
-        } else {
-            setError("Already have this account or check the password again");
+            details.password === details.confirmPass
+        )
+        //Normal registration 
+        {
+            const { name, password, confirmPass } = details
+            const response = await postRegistrationToBE(name, password, confirmPass)
+            console.log("Register response", response)
+
+            // Handle failed registration
+            if (response.errorMessage !== undefined)
+                setError(response.errorMessage);
+            else {
+
+                // Handle successful registration
+                console.log("SET USER")
+                setUser({
+                    name: details.name,
+                    password: details.password,
+                });
+            }
+        }
+        else {
+            setError("Confirm password and password does not match")
         }
     }
 
@@ -41,6 +53,8 @@ export default function RegisterForm() {
                 <div className="form-group">
                     <label>Username</label>
                     <input
+                        minLength="6"
+                        required
                         type="text"
                         name="name"
                         id="name"
@@ -51,6 +65,8 @@ export default function RegisterForm() {
                 <div className="form-group">
                     <label>Password</label>
                     <input
+                        required
+                        minLength="6"
                         type="password"
                         name="password"
                         id="password"
@@ -61,6 +77,8 @@ export default function RegisterForm() {
                 <div className="form-group">
                     <label>Confirm Password</label>
                     <input
+                        required
+                        minLength="6"
                         type="password"
                         name="password"
                         id="password"
