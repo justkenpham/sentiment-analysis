@@ -24,5 +24,9 @@
     width: 100%;
     padding-left: 10px;
     outline-color: #006AFE;
-    background-color: white;
+}
+.product-detail__comment__input>p{
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 20px;
 }

@@ -1,0 +1,12 @@
+.block_rating__average {
+    margin-left: 31px;
+    color: #f1425d;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.block_rating__reviews {
+    margin-left: 8px;
+    color: #656c6f;
+    font-size: 14px; 
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import ProductDetail from '../pages/ProductDetail'
+import ProductDetail from '../pages/ProductDetail/product-detail'
 import HomePage from '../pages/HomePage'
 import ProductList from "../pages/ProductList";
 import LoginForm from "../components/LoginForm";
@@ -16,7 +16,7 @@ const MainRoute = () => {
                 <Route path="/product-list" component={ProductList} />
                 <Route path="/login" component={LoginForm} />
                 <Route path="/register" component={RegisterForm} />
-                <Route path="/" component={HomePage} />
+                <Route path="/" component={ProductList} />
             </Switch>
         </Router>
     )

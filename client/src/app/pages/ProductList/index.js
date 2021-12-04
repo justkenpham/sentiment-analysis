@@ -1,61 +1,118 @@
 import React, { useEffect } from 'react';
-import { exampleProduct } from '../../constants/Product';
-// import { getAllProducts } from '../../services/Product';
-
-import {allProducts} from '../../data/Product.js'
-
+import Header from '../../components/Header';
+import { ProductFilter } from '../../constants/Product';
+import { getAllProducts } from '../../utils/product.utils';
+import {SortRating } from '../../utils/sort';
 
 import "./index.css"
 
 const ProductList = props => {
-    
-    const onViewProduct = () => {
-        props.history.push("/product-detail")
 
+    const [productList, setProductList] = React.useState([]);
+    const [originalProductList, setOriginalProductList] = React.useState([]);
+    
+    useEffect(() => {
+        getAllProducts().then(res => {
+            setProductList(res);
+            setOriginalProductList(res);
+        })
+    },[])
+
+    const onViewProduct = (prod) => {
+        props.history.push("/product-detail",{
+            product_id: prod.product_id
+        })
     }
 
-    // useEffect(() => getAllProducts(),[])
+    const onFilteringProductBasedOnPrice = (e) => {
+        let range = e.target.value;
+        let searchedProducts = [];
+        
+        if(range == ProductFilter.tag.price.Lowest){
+            for(let i = 0; i < originalProductList.length; i++){
+                if(originalProductList[i].price < 100){
+                    searchedProducts.push(originalProductList[i])
+                }
+            }
+            console.log(searchedProducts);
+        }else if(range == ProductFilter.tag.price.Medium){
+            for(let i = 0; i < originalProductList.length; i++){
+                if(originalProductList[i].price > 100 && originalProductList[i].price < 500){
+                    searchedProducts.push(originalProductList[i])
+                }
+            }
+        }else if(range == ProductFilter.tag.price.Biggest){
+            for(let i = 0; i < originalProductList.length; i++){
+                if(originalProductList[i].price > 500){
+                    searchedProducts.push(originalProductList[i])
+                }
+            }
+        }else{
+            let tempList = [].concat(originalProductList);
+            setProductList(tempList);
+            return;
+        }
+        setProductList(searchedProducts);
+    }
+
+    const onFilteringProductBasedOnRating = (e) => {
+        let range = e.target.value;
+        console.log("rating range", range)
+        let searchedProducts = [].concat(originalProductList);
+        console.log("searched Products", searchedProducts)
+
+        if(range !== "🤔 Rating"){
+            SortRating(searchedProducts, range)
+        }
+        else{
+            let tempList = [].concat(originalProductList);
+            setProductList(tempList);
+            return;
+        }
+        console.log("after filter by rating", searchedProducts)
+        setProductList(searchedProducts);
+    }
 
     return(
-        <div className="pl-container">
-            <div className="pl-filter">
-                <p>Filter</p>
-                <div className="pl-select">
-                    <select title="Price">
-                        <option>💵 Price</option>
-                        <option>More than $10K</option>
-                        <option>From $1K to $10K</option>
-                        <option>Less than $1K</option>
-                    </select>
-                    <select title="Rating">
-                        <option>🤔 Rating</option>
-                        <option>😆 Good</option>
-                        <option>🙂 Normal</option>
-                        <option>😒 Bad</option>
-                    </select>
+        <>
+            <Header
+                setProductList={setProductList}
+            />
+            <div className="pl-container">
+                <div className="pl-filter">
+                    <p>Filter</p>
+                    <div className="pl-select">
+                        <select onChange={onFilteringProductBasedOnPrice} title="Price">
+                            <option value="💵 Price">💵 Price</option>
+                            <option value={ProductFilter.tag.price.Biggest}>More than $500</option>
+                            <option value={ProductFilter.tag.price.Medium}>From $100 to $500</option>
+                            <option value={ProductFilter.tag.price.Lowest}>Less than $100</option>
+                        </select>
+                        <select onChange={onFilteringProductBasedOnRating} title="Rating">
+                            <option>🤔 Rating</option>
+                            <option value={ProductFilter.tag.rating['Highest To Lowest']}>Highest to Lowest</option>
+                            <option value={ProductFilter.tag.rating['Lowest To Highest']}>Lowest to Highest</option>
+                        </select>
+                    </div>
                 </div>
-                <div className="pl-btn">    
-                    <div className="pl-btn__login">Login</div>
-                    <div className="pl-btn__signup">Signup</div>
-                </div>
-            </div>
-            <section className="pl-list">
-                {allProducts.map((prod) => (
-                    <div className="pl-list__product" onClick={onViewProduct}>
-                        <img src={prod.image} />
-                        <div>
-                            <div className="pl-list__product__name">
-                                <p>{prod.product_name}</p>
-                            </div>
-                            <div className="pl-list__product__under-name">
-                                <p className="pl-list__product__under-name__price">${prod.price}</p>
-                                <p className="pl-list__product__under-name__rating">{prod.rating}</p>
+                <section className="pl-list">
+                    {productList ? (productList.map((prod) => (
+                        <div className="pl-list__product" onClick={() => onViewProduct(prod)}>
+                            <img className="pl-list__product__img" src={prod.image} />
+                            <div className="pl-list__product__under-img">
+                                <div className="pl-list__product__name">
+                                    {prod.product_name}
+                                </div>
+                                <div className="pl-list__product__under-name">
+                                    <p className="pl-list__product__under-name__price">${prod.price}</p>
+                                    <p className="pl-list__product__under-name__rating">{prod.rating}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-            </section>
-        </div>
+                    ))) : null }
+                </section>
+            </div>
+        </>
     )
 }
 

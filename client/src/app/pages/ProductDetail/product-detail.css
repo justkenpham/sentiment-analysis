@@ -1,16 +1,7 @@
 .product_detail{
-    background-color: rgb(255, 255, 255);;
+    background-color: rgb(255, 255, 255);
 }
 
-.background{
-    position: absolute;
-    background-color: #fff;
-    background-image: url("../../assets/logo.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(8px);
-    -webkit-filter: blur(8px)
-}
 .mainpage{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -24,26 +15,26 @@
 }
 
 .product_image {
-    max-height: auto;
-    max-width: 100%;
+    max-width: auto;
+    max-height: 600px;
+    padding-top: 58px;
+    display: flex;
+    justify-content: center;
 }
 
 .product_image > img{
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 50px;
-    overflow: hidden;
-    max-width: 100%;
-    height: auto;
-    filter: none ;
-    -webkit-filter: none ;
+    display: block;
+    position: absolute;
+    max-height: 80%;
+    width: auto;
+    margin: auto;
 }
 
 .product_rightSide{
     text-align: left;
     padding-top: 50px;
     padding-right: 40px;
-    min-height: 400px;
+    max-height: 600px;
     font-weight: bold;
 }
 
@@ -97,19 +88,6 @@
     margin-top: 33px;
     margin-bottom: 10px; 
 }
-                
-.block_rating__average {
-    margin-left: 31px;
-    color: #f1425d;
-    font-size: 20px;
-    line-height: 28px;
-}
-
-.block_rating__reviews {
-    margin-left: 8px;
-    color: #656c6f;
-    font-size: 14px; 
-}
 
 .block_price {
     margin-top: 5px;
@@ -139,14 +117,19 @@
     margin-top: 12px;
     padding: 0;
     color: #fff;
-    background-color: #fdafaf;
+    background-color: #f1425d;
     font-size: 16px;
     transition: all 0.3s; 
     font-family: 'Montserrat', sans-serif;
 }
     
+.button.button_addToCard > a{
+    text-decoration: none;
+    color:#000;
+}
+
 .button.button_addToCard:hover {
-    background-color: #f1425d; 
+    background-color: #fdafaf; 
 }
 
 .text{
@@ -193,4 +176,5 @@
 .share > ul > li >a{
     text-decoration: none;
     margin-left: 5px;
+    color: #000;
 }

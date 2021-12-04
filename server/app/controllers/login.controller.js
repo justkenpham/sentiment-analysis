@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
             else {
                 console.log(results)
                 if (results.length === 0) {
-                    res.status(401).send({
+                    res.send({
                         errorMessage: 'Username or password is incorrect'
 
                     })
@@ -47,7 +47,7 @@ exports.login = async (req, res) => {
                         message: "Login successfully",
                         token: token
                     })
-            
+
                 }
             }
 
