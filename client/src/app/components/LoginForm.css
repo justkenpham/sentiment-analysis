@@ -10,13 +10,16 @@ input, button{
     border: none;
     outline: none;
 }
-.App{
+/* .App{
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: linear-gradient(to top right, #7FFFD4, #A52A2A);
+} */
+
     /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
-}
+
 
 form{
     display: block;
