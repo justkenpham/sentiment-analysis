@@ -17,26 +17,33 @@ exports.login  = async (req, res) => {
         }
 
         db.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], async (error, results) => {
-            if(error){}
-            console.log(results)
-            if (!results) {
-                res.status(401).send({
-                    errorMessage: 'Username or password is incorrect'
+            if(error){
+                return res.send({
+                    message: "Can not retriece the database"
                 })
-            } else {
-                const id = results[0].id;
-                const token = jwt.sign({ id: id }, 'SE2021Project', {
-                    expiresIn: '1d'
-                });
-                console.log("The token is: " + token);
-                res.cookie('jwt', token, cookieOptions);
-                res.cookie('username', username, cookieOptions);
-                res.cookie('password', password, cookieOptions);
-                res.send({
-                    message: "Login successfully"
-                })
-                res.status(200).redirect('/');
             }
+            else{
+                console.log(results)
+                if (results.length === 0) {
+                    res.status(401).send({
+                        errorMessage: 'Username or password is incorrect'
+                })
+                } else {
+                    const id = results[0].id;
+                    const token = jwt.sign({ id: id }, 'SE2021Project', {
+                        expiresIn: '1d'
+                    });
+                    console.log("The token is: " + token);
+                    res.cookie('jwt', token, cookieOptions);
+                    res.cookie('username', username, cookieOptions);
+                    res.cookie('password', password, cookieOptions);
+                    res.send({
+                        message: "Login successfully"
+                    })
+                    res.status(200).redirect('/');
+                }          
+            }
+            
         });
     } catch (error) {
         console.log(error)
