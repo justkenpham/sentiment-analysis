@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
-import { exampleProduct } from '../../constants/Product';
-// import { getAllProducts } from '../../services/Product';
-
-import {allProducts} from '../../data/Product.js'
+import { getAllProducts } from '../../utils/product.utils';
 
 
 import "./index.css"
 
 const ProductList = props => {
+
+    const [productList, setProductList] = React.useState([]);
     
     const onViewProduct = () => {
         props.history.push("/product-detail")
 
     }
 
-    // useEffect(() => getAllProducts(),[])
+    useEffect(() => {
+        getAllProducts().then(res => setProductList(res))
+    },[])
 
     return(
         <div className="pl-container">
@@ -40,12 +41,12 @@ const ProductList = props => {
                 </div>
             </div>
             <section className="pl-list">
-                {allProducts.map((prod) => (
+                {productList ? (productList.map((prod) => (
                     <div className="pl-list__product" onClick={onViewProduct}>
-                        <img src={prod.image} />
-                        <div>
+                        <img className="pl-list__product__img" src={prod.image} />
+                        <div className="pl-list__product__under-img">
                             <div className="pl-list__product__name">
-                                <p>{prod.product_name}</p>
+                                {prod.product_name}
                             </div>
                             <div className="pl-list__product__under-name">
                                 <p className="pl-list__product__under-name__price">${prod.price}</p>
@@ -53,7 +54,7 @@ const ProductList = props => {
                             </div>
                         </div>
                     </div>
-                ))}
+                ))) : null }
             </section>
         </div>
     )
