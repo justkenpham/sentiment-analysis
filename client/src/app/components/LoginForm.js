@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LoginForm.css";
+import { loginCheckInBE } from "../utils/auth.utils"
 function LoginForm(props) {
   const adminUser = {
     name: "phong",
@@ -9,17 +10,22 @@ function LoginForm(props) {
   const [user, setUser] = useState({ name: "", password: "" });
   const [error, setError] = useState("");
 
-  const Login = (details) => {
-    if (
-      details.name == adminUser.name &&
-      details.password == adminUser.password
-    ) {
+  const Login = async (details) => {
+    const response = await loginCheckInBE(details.name, details.password)
+
+    // Handle failed login
+    if (response.length < 1) {
+      setError(" Incorrect password/username ");
+
+    }
+    else {
+
+      // Handle successful login
+      console.log("LOGIN USER")
       setUser({
         name: details.name,
         password: details.password,
       });
-    } else {
-      setError("Incorrect username or password");
     }
   }
   const Logout = () => {
@@ -51,6 +57,7 @@ function LoginForm(props) {
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
+            required
             type="password"
             name="password"
             id="password"
@@ -61,7 +68,7 @@ function LoginForm(props) {
             placeholder="*****************"
           />
         </div>
-        <input type="submit" value="LOGIN" />
+        <input required type="submit" value="LOGIN" />
       </div>
       <div>
         {user.name != "" ? props.history.push("/product-list") : null}
