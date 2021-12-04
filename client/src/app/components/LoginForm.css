@@ -15,7 +15,7 @@ input, button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to top right, #7FFFD4, #A52A2A);
+    /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
 }
 
 form{
