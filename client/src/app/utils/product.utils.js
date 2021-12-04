@@ -4,7 +4,7 @@ const getAllProductsRoute = "http://localhost:8080/products/all"
 const searchProductRoute = "http://localhost:8080/products/search?product_name="
 export const getProductDetail = async (productId) => {
     const response = await axios.get(getProductDetailRoute + productId)
-    console.log("response:", response)
+    console.log("response:", response.data)
     return response.data
 }
 export const getAllProducts = async () => {
