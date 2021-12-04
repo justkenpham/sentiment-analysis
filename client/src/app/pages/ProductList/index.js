@@ -7,7 +7,7 @@ import "./index.css"
 const ProductList = props => {
 
     const [productList, setProductList] = React.useState([]);
-    
+
     const onViewProduct = () => {
         props.history.push("/product-detail")
 
@@ -15,9 +15,9 @@ const ProductList = props => {
 
     useEffect(() => {
         getAllProducts().then(res => setProductList(res))
-    },[])
+    }, [])
 
-    return(
+    return (
         <div className="pl-container">
             <div className="pl-filter">
                 <p>Filter</p>
@@ -50,7 +50,7 @@ const ProductList = props => {
                             </div>
                         </div>
                     </div>
-                ))) : null }
+                ))) : null}
             </section>
         </div>
     )

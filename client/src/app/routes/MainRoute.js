@@ -16,7 +16,7 @@ const MainRoute = () => {
                 <Route path="/product-list" component={ProductList} />
                 <Route path="/login" component={LoginForm} />
                 <Route path="/register" component={RegisterForm} />
-                <Route path="/" component={HomePage} />
+                <Route path="/" component={ProductList} />
             </Switch>
         </Router>
     )

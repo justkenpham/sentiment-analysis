@@ -6,9 +6,11 @@ import './index.css'
 
 import SearchIcon from '../../assets/icon/search-icon.svg'
 import AppLogo from '../../assets/icon/brand.png'
+import LoginForm from '../LoginForm';
+import RegisterForm from '../Register/RegisterForm';
 
 const Header = (props) => {
-    return(
+    return (
         <div className="ctn">
             <div className="ctn__info">
                 <img className="ctn__info__logo" src={AppLogo} />
@@ -16,14 +18,15 @@ const Header = (props) => {
             </div>
             <div className="ctn__search">
                 <img src={SearchIcon} />
-                <input type="text" name="search" placeholder="Find your product category..." className="search-input"/>
+                <input type="text" name="search" placeholder="Find your product category..." className="search-input" />
                 <a href="#" className="search-btn">
-                        <i className="fas fa-search"></i>      
+                    <i className="fas fa-search"></i>
                 </a>
             </div>
-            <div className="pl-btn">    
-                <div className="pl-btn__login">Login</div>
+            <div className="pl-btn">
+                <div className="pl-btn__login" >Login</div>
                 <div className="pl-btn__signup">Signup</div>
+                <div className="pl-logout">Logout</div>
             </div>
         </div>
     )

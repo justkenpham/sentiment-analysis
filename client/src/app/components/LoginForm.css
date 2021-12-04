@@ -10,13 +10,13 @@ input, button{
     border: none;
     outline: none;
 }
-/* .App{
-    height: 100vh;
+.App{
+    /* height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-image: linear-gradient(to top right, #7FFFD4, #A52A2A);
-} */
+    justify-content: center; */
+    /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
+}
 
     /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
 
@@ -24,6 +24,10 @@ input, button{
 form{
     display: block;
     position: relative;
+    /* height: 100vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 form::after{
     content: '';
@@ -42,6 +46,7 @@ form .form-inner{
     position: relative;
     display: block;
     background-color: #FFF;
+    /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
     padding: 30px;
     z-index: 2;
 }

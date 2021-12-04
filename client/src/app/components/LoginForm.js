@@ -39,7 +39,7 @@ function LoginForm(props) {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className="form" onSubmit={submitHandler}>
       <div className="form-inner">
         <h2>Login</h2>
         {error != "" ? <p className="error">{error}</p> : ""}
