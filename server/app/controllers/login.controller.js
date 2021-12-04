@@ -38,7 +38,8 @@ exports.login  = async (req, res) => {
                     res.cookie('username', username, cookieOptions);
                     res.cookie('password', password, cookieOptions);
                     res.send({
-                        message: "Login successfully"
+                        message: "Login successfully",
+                        token: token
                     })
                     res.status(200).redirect('/');
                 }          
