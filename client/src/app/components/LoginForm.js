@@ -9,12 +9,15 @@ function LoginForm(props) {
   const [details, setDetails] = useState({ name: "", password: "" });
   const [user, setUser] = useState({ name: "", password: "" });
   const [error, setError] = useState("");
-
+  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   const Login = async (details) => {
     const response = await loginCheckInBE(details.name, details.password)
 
     // Handle failed login
-    if (response.length < 1) {
+    if (format.test(details.name))
+      setError("Username must not contain special characters");
+
+    else if (response.errorMessage !== undefined) {
       setError(" Incorrect password/username ");
 
     }
