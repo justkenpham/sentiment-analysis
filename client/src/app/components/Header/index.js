@@ -4,23 +4,24 @@ import { Link } from 'react-router-dom'
 
 import './index.css'
 
+import SearchIcon from '../../assets/icon/search-icon.svg'
+import AppLogo from '../../assets/icon/brand.png'
+
 const Header = (props) => {
     return(
-        <div className="header">
-            <div className="container">
-                <div className="logo">
-                    <img src={logo} alt="" />
-                    
-                </div>  
-                <p className="header__name">App Name</p>
-                <input placeholder="Search your products" className="header__input" />
-                <ul className="header_nav">
-                    <li className="product-list">Product List</li>
-                    <li className="SignIn">Login</li>
-                </ul>
+        <div className="ctn">
+            <div className="ctn__info">
+                <img className="ctn__info__logo" src={AppLogo} />
+                {/* <div className="ctn__info__name">Senti!</div> */}
+            </div>
+            <div className="ctn__search">
+                <img src={SearchIcon} />
+                <input type="text" name="search" placeholder="Find your product category..." className="search-input"/>
+                <a href="#" className="search-btn">
+                        <i className="fas fa-search"></i>      
+                </a>
             </div>
         </div>
-        
     )
 }
 
