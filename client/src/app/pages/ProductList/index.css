@@ -1,7 +1,9 @@
+
 .pl-container{
     padding: 50px;
     width: 100vw;
 }
+
 
 .pl-filter{
     /* border: 1px solid salmon; */
@@ -14,7 +16,8 @@
     margin-right: 10px;
     white-space: nowrap;
 }
-.pl-filter > div > button{
+.pl-filter > div > select{
+
     border: 0.5px solid grey;
     cursor: pointer;
     border-radius: 5px;
@@ -77,6 +80,7 @@
 }
 
 .pl-list{
+    /* border: 1px solid red; */
     display: flex;
     min-height: calc(100vh - 11.25rem);
     flex-wrap: wrap;

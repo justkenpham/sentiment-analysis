@@ -18,6 +18,9 @@ input, button{
     background-image: linear-gradient(to top right, #7FFFD4, #A52A2A);
 } */
 
+    /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
+}
+
 form{
     display: block;
     position: relative;
@@ -115,5 +118,8 @@ form .form-inner input[type="submit"]:hover,
 .welcome h2 span{
     color:#A52A2A;
     font-weight: 700;
+}
+.error{
+    color: red;
 }
 

@@ -7,7 +7,9 @@ const cookieOptions = {
     )
 }
 
-exports.login  = async (req, res) => {
+
+exports.login = async (req, res) => {
+
     const { username, password } = await req.body;
     try {
         if (!username || !password) {
@@ -17,17 +19,21 @@ exports.login  = async (req, res) => {
         }
 
         db.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], async (error, results) => {
-            if(error){
+
+            if (error) {
                 return res.send({
                     message: "Can not retriece the database"
                 })
             }
-            else{
+
+            else {
                 console.log(results)
                 if (results.length === 0) {
                     res.status(401).send({
                         errorMessage: 'Username or password is incorrect'
-                })
+
+                    })
+
                 } else {
                     const id = results[0].id;
                     const token = jwt.sign({ id: id }, 'SE2021Project', {
@@ -41,14 +47,16 @@ exports.login  = async (req, res) => {
                         message: "Login successfully",
                         token: token
                     })
-                    res.status(200).redirect('/');
-                }          
-            }
             
+                }
+            }
+
         });
     } catch (error) {
         console.log(error)
         res.status(401).send({
-            errorMessage: 'Username or password is incorrect'});
+
+            errorMessage: 'Username or password is incorrect'
+        });
     }
 }
