@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "This is what the fuck bro." });
+    res.json({ message: "Server now is online." });
 });
 
 const reviewRoute = require('./app/routes/review.route');
