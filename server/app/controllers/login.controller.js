@@ -19,17 +19,15 @@ exports.login = async (req, res) => {
         }
 
         db.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], async (error, results) => {
-
             if (error) {
                 return res.send({
                     message: "Can not retriece the database"
                 })
             }
-
             else {
                 console.log(results)
                 if (results.length === 0) {
-                    res.status(401).send({
+                    res.send({
                         errorMessage: 'Username or password is incorrect'
 
                     })
@@ -47,15 +45,14 @@ exports.login = async (req, res) => {
                         message: "Login successfully",
                         token: token
                     })
-            
+
                 }
             }
 
         });
     } catch (error) {
         console.log(error)
-        res.status(401).send({
-
+        res.send({
             errorMessage: 'Username or password is incorrect'
         });
     }
