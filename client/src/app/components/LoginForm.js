@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./LoginForm.css";
 import { loginCheckInBE } from "../utils/auth.utils"
+import { UserContext } from "../context/UserContext"
 function LoginForm(props) {
   const adminUser = {
     name: "phong",
     password: "123"
   };
+  const { login, setLogin } = useContext(UserContext)
   const [details, setDetails] = useState({ name: "", password: "" });
   const [user, setUser] = useState({ name: "", password: "" });
   const [error, setError] = useState("");
@@ -29,6 +31,7 @@ function LoginForm(props) {
         name: details.name,
         password: details.password,
       });
+      setLogin(response.userInfo)
     }
   }
   const Logout = () => {
