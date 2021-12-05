@@ -1,14 +1,17 @@
 import "./App.css";
 import MainRoute from "./routes/MainRoute";
-import React, { useState } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import Header from './components/Header/index'
-
+import { UserContext } from "./context/UserContext";
 function App() {
-
+  const [user, setUser] = useState(null)
+  const loginStatus = useMemo(() => ({ user, setUser }), [user, setUser])
   return (
     <div className="App">
-      {/* <Header/> */}
-      <MainRoute />
+      <UserContext.Provider value={loginStatus}>
+        <MainRoute />
+      </UserContext.Provider>
+
       {/* {user.email != "" ? (
         <div className="welcome">
           <h1>Successfully logged in</h1>
