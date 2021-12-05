@@ -21,8 +21,10 @@ const postData = {
 
 export default function ProductDetail(props) {
   const PathName = window.location.href;
+  console.log("history", props.history)
   //State
-  const [productId, setProductId] = useState(11);
+  const history_product_id = (props.history.location.state.product_id) ? (props.history.location.state.product_id) : 11;
+  const [productId, setProductId] = useState(history_product_id);
   const [product, setProduct] = useState({ name: "", image: "", id: "", category: "", price: "", description: "", rating: "", numReviews: "", link: "" });
 
   //useEffect
