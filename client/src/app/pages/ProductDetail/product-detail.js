@@ -14,10 +14,11 @@ export default function ProductDetail(props) {
   const location = useLocation();
   const productid = location.state.product_id;
   const PathName = window.location.href;
-  console.log("ID: ", productid);
+  console.log("history", props.history)
   //State
-  const [productId, setProductId] = useState(productid);
-  const [product, setProduct] = useState({ name: "", image: "", id: "", category: "", price: "", description: "", rating: "", numReview: "", link: "" });
+  const history_product_id = (props.history.location.state.product_id) ? (props.history.location.state.product_id) : 11;
+  const [productId, setProductId] = useState(history_product_id);
+  const [product, setProduct] = useState({ name: "", image: "", id: "", category: "", price: "", description: "", rating: "", numReviews: "", link: "" });
 
   //useEffect
   useEffect(() => {
