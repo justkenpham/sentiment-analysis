@@ -48,7 +48,7 @@ exports.takeRating = (product_id) => {
                 reject(err);
             }
             else {
-                const num_reviews = result[0].num_reviews + 1;
+                const num_reviews = result[0].num_reviews;
                 resolve(num_reviews);
             }
         })
