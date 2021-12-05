@@ -14,8 +14,8 @@ input, button{
     /* height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center; */
-    /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
+    justify-content: center; 
+    background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
 }
 
     /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
@@ -24,7 +24,7 @@ input, button{
 form{
     display: block;
     position: relative;
-    /* height: 100vh; */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +38,7 @@ form::after{
     right: -5px;
     bottom: -5px;
     z-index: 1;
-    /* background-image: linear-gradient(to top right, #7FFFD4, #A52A2A); */
+    background-image: linear-gradient(to top right, #7FFFD4, #A52A2A);
     background-color: white;
     border-radius: 5px;
 }
