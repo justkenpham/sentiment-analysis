@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import "./product-detail.css";
 import logo from "../../assets/logo.svg";
 import fb from "../../assets/fb.png"
@@ -7,12 +7,16 @@ import InputSection from "../../components/Comments/InputSection";
 import Rating from "../../components/Rating/rating";
 import { getProductDetail } from "../../utils/product.utils";
 import { useLocation } from "react-router-dom";
+import { UserContext } from '../../context/UserContext';
 //
 
 export default function ProductDetail(props) {
-  const userID = 11;
+
   const location = useLocation();
   const productid = location.state.product_id;
+  const { login, setLogin } = useContext(UserContext)
+  const userId = (login) ? (login.user_id) : (11)
+  console.log("User id", userId)
   const PathName = window.location.href;
   console.log("history", props.history)
   //State
@@ -99,8 +103,8 @@ export default function ProductDetail(props) {
         </div>
       </div>
       <InputSection
-      productid= {productid}
-      userID = {userID}>
+        productid={productid}
+        userID={userId}>
       </InputSection>
     </div>
   );

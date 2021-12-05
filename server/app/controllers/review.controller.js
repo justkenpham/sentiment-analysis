@@ -37,4 +37,34 @@ exports.postReview = async (req, res) => {
             })
         }
     })
+
+
+    // //Save updated rating to database
+    // sentiAna.takeRating(product_id)
+    // .then((num_reviews) => {
+    //     return new Promise((resolve, reject) => {
+    //         db.query(`SELECT rating AS rating_score FROM product WHERE product_id = ?`, [product_id], async (err, result) => {
+    //             if(err){
+    //                 reject(err);
+    //             }
+    //             else {
+    //                 let rating_score = result[0].rating_score;
+    //                 let difference = overall - rating_score;
+    //                 rating_score = rating_score + difference/num_reviews;
+    //                 console.log(rating_score);
+    //                 resolve(rating_score);
+    //             }
+    //         })
+    //     })   
+    // })   
+    // .then((data) => {
+    //     db.query(`UPDATE product SET rating = ? WHERE product_id = ?`, [data, product_id], (err, result) => {
+    //         if(err){
+    //             console.log("Can not update to the database");
+    //         }
+    //     })
+    // })
+    // .catch((err) => {
+    //     console.log(err)
+    // })
 }

@@ -8,7 +8,7 @@ import './InputSection.css'
 
 export default function InputSection(props) {
   console.log("Input", props.productid);
-  const userID = 1;
+  const userID = (props.useID) ? (props.useID) : (1);
   const sentiment = new Sentiment();
 
   const [isOpen, setIsOpen] = useState(false);
