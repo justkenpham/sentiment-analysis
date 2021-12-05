@@ -39,8 +39,11 @@
 }
 .product-detail__comment__input>p{
     color: #000;
+    padding-top: 10px;
     padding-left: 10px;
     padding-right: 20px;
+    font-size: 14px;
+    display: block;
 }
 .submit{
     font-size: 14px;

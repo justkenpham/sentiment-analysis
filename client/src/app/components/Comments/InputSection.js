@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import AnswerSection from "./AnswerSection";
 import Sentiment from 'sentiment';
-
+import Popup from '../Popup/Popup';
 import logo from "../../assets/logo.svg";
 import { getReviewFromBE, postReviewToBE } from '../../utils/review.utils';
 import './InputSection.css'
 
 export default function InputSection(props){
-  const { productid, userID } = props;
-  console.log(productid);
+  console.log("Input" , props.productid);
+  const userID = 1;
   const sentiment = new Sentiment();
+
+  const [isOpen, setIsOpen] = useState(false);
   const [review, setReview] = useState({ review_text:"", review_time:"", overall:"", user_id:"", product_id: ""});
   const [phrase, setPhrase] = useState('');
   const [sentimentScore, setSentimentScore] = useState(null);
@@ -43,23 +45,36 @@ export default function InputSection(props){
   const submitHandler = (e) => {
     e.preventDefault();
     Input(review);
-};
+  };
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
 
   return (
     <div className="product-detail__comment">
       <div className="product-detail__comment__input">
         <img src={logo} />
-        <input placeholder="Comment your thoughts..." value={phrase} onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: sentimentScore.comparative, user_id: userID, product_id: productid })}/>
-        <button className="submit" onClick={submitHandler}>Submit</button>
+        <input placeholder="Comment your thoughts..." value={phrase} onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length)/6 *5)+2.5 , user_id: userID, product_id: props.productid })}/>
+        <button className="submit" onClick={(e) => { submitHandler(e); togglePopup();}}>Submit</button>
+        {isOpen && <Popup
+        content={<>
+        <b>Updated!</b>
+        <p>Thank you for your review.</p>
+        </>}
+      handleClose={togglePopup}
+    />}
         {sentimentScore !== null?
           sentimentScore.words.length > 0?
-            <p>Score {sentimentScore.score / sentimentScore.words.length}</p>
-          : <p>Score 0</p> 
-          : ''
+            sentimentScore.score < 0?
+            <p>Score 0</p>
+          :<p>Score {sentimentScore.score / sentimentScore.words.length}</p> 
+          :<p>Score 0</p>
+          :<p>Score 0</p>
         }
       </div>
       <AnswerSection
-      product_id= {productid}>
+      product_id= {props.productid}>
       </AnswerSection>
     </div>
   );

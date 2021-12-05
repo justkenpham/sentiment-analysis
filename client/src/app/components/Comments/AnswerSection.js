@@ -5,9 +5,8 @@ import { getReviewFromBE, postReviewToBE } from '../../utils/review.utils';
 import "./AnswerSection.css";
 
 const AnswerSection = props => {
-  const {product_id} = props;
-  console.log(product_id);
-  const [productId, setProductId] = useState(42);
+  console.log("Answer", props.product_id);
+  const [productId, setProductId] = useState(props.product_id);
   const [review, setReview] = useState([{ name: "", review: "", date: "", score: "" }]);
 
   useEffect(() => {

@@ -5,25 +5,19 @@ import fb from "../../assets/fb.png"
 import tw from "../../assets/tw.png";
 import InputSection from "../../components/Comments/InputSection";
 import Rating from "../../components/Rating/rating";
-import { getReviewFromBE, postReviewToBE } from '../../utils/review.utils';
 import { getProductDetail } from "../../utils/product.utils";
+import { useLocation } from "react-router-dom";
 //
-const postData = {
-  review_text: "This product is awesome",
-  review_time: "2014-01-01 13:00:00",
-  overall: "5.0",
-  user_id: "7",
-  product_id: 11
-
-}
-
-
 
 export default function ProductDetail(props) {
+  const userID = 11;
+  const location = useLocation();
+  const productid = location.state.product_id;
   const PathName = window.location.href;
+  console.log("ID: ", productid);
   //State
-  const [productId, setProductId] = useState(11);
-  const [product, setProduct] = useState({ name: "", image: "", id: "", category: "", price: "", description: "", rating: "", numReviews: "", link: "" });
+  const [productId, setProductId] = useState(productid);
+  const [product, setProduct] = useState({ name: "", image: "", id: "", category: "", price: "", description: "", rating: "", numReview: "", link: "" });
 
   //useEffect
   useEffect(() => {
@@ -42,17 +36,17 @@ export default function ProductDetail(props) {
   //
   const changeProduct = (productDetail) => {
     console.log(" Inside change Product ", productDetail)
-    const { product_id, product_name, description, price, image, rating, category_id } = productDetail[0]
+    const { product_id, product_name, description, price, image, rating, category_id, category_name, numReviews } = productDetail[0]
     setProduct({
       name: product_name,
       image: image,
       id: product_id,
-      category: category_id,
+      category: category_name,
       price: price,
       description: description,
       rating: rating,
-      numReviews: "1",
-      link: "google.com"
+      numReview: numReviews,
+      link: "https://www.google.com/search?tbm=shop&q="
     });
   }
 
@@ -81,11 +75,11 @@ export default function ProductDetail(props) {
             <div class="block_rating">
               <Rating
                 rating={product.rating}
-                numReviews={product.numReviews}>
+                numReviews={product.numReview}>
               </Rating>
             </div>
             <div class="button">
-              <button class="button button_addToCard"><a href={"https:/" + product.link}>Buy Now</a>
+              <button class="button button_addToCard"><a href={product.link + product.name}>Buy Now</a>
               </button>
               <br></br>
               <span class="text">Like it? Share It!</span>
@@ -103,7 +97,10 @@ export default function ProductDetail(props) {
           </div>
         </div>
       </div>
-      <InputSection />
+      <InputSection
+      productid= {productid}
+      userID = {userID}>
+      </InputSection>
     </div>
   );
 };
