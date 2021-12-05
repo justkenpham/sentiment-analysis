@@ -3,7 +3,7 @@ const db = require('../models/database')
 module.exports.getReview = async (req, res) => {
     console.log("request params  ", req.param)
     let productId = req.params.product_id
-    let query = `SELECT * FROM review WHERE product_id = ${productId}`
+    let query = `select a.username, b.review_text, b.review_time, b.overall, b.product_id from user as a, review as b where b.user_id = a.user_id and b.product_id = ${productId}`
     db.query(query, async (err, result) => {
         if (err) {
             res.status(500).send({

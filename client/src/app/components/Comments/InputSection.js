@@ -3,35 +3,64 @@ import AnswerSection from "./AnswerSection";
 import Sentiment from 'sentiment';
 
 import logo from "../../assets/logo.svg";
+import { getReviewFromBE, postReviewToBE } from '../../utils/review.utils';
 import './InputSection.css'
 
-export default function InputSection(){
+export default function InputSection(props){
+  const { productid, userID } = props;
+  console.log(productid);
   const sentiment = new Sentiment();
+  const [review, setReview] = useState({ review_text:"", review_time:"", overall:"", user_id:"", product_id: ""});
   const [phrase, setPhrase] = useState('');
-  const [comment, setComment] = useState({name: "", date: ""})
   const [sentimentScore, setSentimentScore] = useState(null);
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
+    setCurrentDate(
+      year + '-' + month + '-' + date 
+      + ' ' + hours + ':' + min + ':' + sec
+    );
+  }, []);
 
   useEffect(() => {
     setSentimentScore(sentiment.analyze(phrase));
   }, [phrase]);
 
+  const Input = async (review) => {
+    const { review_text, review_time, overall, user_id, product_id } = review
+    console.log(review)
+    const response = await postReviewToBE(review)
+    console.log("Register response", response)
+  }
+
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    Input(review);
+};
+
   return (
     <div className="product-detail__comment">
       <div className="product-detail__comment__input">
         <img src={logo} />
-        <input placeholder="Comment your thoughts..." value={phrase} onChange={e => setPhrase(e.target.value)}/>
+        <input placeholder="Comment your thoughts..." value={phrase} onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: sentimentScore.comparative, user_id: userID, product_id: productid })}/>
+        <button className="submit" onClick={submitHandler}>Submit</button>
         {sentimentScore !== null?
-            sentimentScore.score <= 0 ?
-            <p>Score: 0</p>
-            :
-            sentimentScore.score > 5 ?
-            <p>Score: 5</p>
-            :
-            <p>Score: {sentimentScore.score-0.5}</p>
-            : ''
+          sentimentScore.words.length > 0?
+            <p>Score {sentimentScore.score / sentimentScore.words.length}</p>
+          : <p>Score 0</p> 
+          : ''
         }
       </div>
-      <AnswerSection logo={logo} />
+      <AnswerSection
+      product_id= {productid}>
+      </AnswerSection>
     </div>
   );
 
