@@ -4,8 +4,8 @@ import React, { useState, useMemo, useContext } from "react";
 import Header from './components/Header/index'
 import { UserContext } from "./context/UserContext";
 function App() {
-  const [user, setUser] = useState(null)
-  const loginStatus = useMemo(() => ({ user, setUser }), [user, setUser])
+  const [login, setLogin] = useState(null)
+  const loginStatus = useMemo(() => ({ login: login, setLogin: setLogin }), [login, setLogin])
   return (
     <div className="App">
       <UserContext.Provider value={loginStatus}>
