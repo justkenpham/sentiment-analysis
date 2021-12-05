@@ -34,7 +34,6 @@ const ProductList = props => {
                     searchedProducts.push(originalProductList[i])
                 }
             }
-            console.log(searchedProducts);
         }else if(range == ProductFilter.tag.price.Medium){
             for(let i = 0; i < originalProductList.length; i++){
                 if(originalProductList[i].price > 100 && originalProductList[i].price < 500){
@@ -57,9 +56,7 @@ const ProductList = props => {
 
     const onFilteringProductBasedOnRating = (e) => {
         let range = e.target.value;
-        console.log("rating range", range)
         let searchedProducts = [].concat(originalProductList);
-        console.log("searched Products", searchedProducts)
 
         if(range !== "🤔 Rating"){
             SortRating(searchedProducts, range)
@@ -69,7 +66,6 @@ const ProductList = props => {
             setProductList(tempList);
             return;
         }
-        console.log("after filter by rating", searchedProducts)
         setProductList(searchedProducts);
     }
 

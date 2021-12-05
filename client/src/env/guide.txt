@@ -1,1 +1,0 @@
-"env" is the place to store all the configuration for the client
