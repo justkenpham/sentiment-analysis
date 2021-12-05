@@ -55,7 +55,7 @@ export default function InputSection(props){
     <div className="product-detail__comment">
       <div className="product-detail__comment__input">
         <img src={logo} />
-        <input placeholder="Comment your thoughts..." value={phrase} onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length)/6 *5)+2.5 , user_id: userID, product_id: props.productid })}/>
+        <input placeholder="Comment your thoughts..." value={phrase} onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length)/6 *5)+2.5 , user_id: userID, product_id: props.productid })} required/>
         <button className="submit" onClick={(e) => { submitHandler(e); togglePopup();}}>Submit</button>
         {isOpen && <Popup
         content={<>
