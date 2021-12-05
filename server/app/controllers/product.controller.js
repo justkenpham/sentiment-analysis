@@ -20,7 +20,9 @@ module.exports.searchProduct = async (req, res) => {
 module.exports.getProductDetail = async (req, res) => {
     console.log("request params  ", req.param)
     let productId = req.params.product_id
-    let query = `SELECT * FROM product WHERE product_id = ${productId}`
+    let query = `SELECT a.*, b.category_name, c.numReviews
+    FROM product as a, category as b, (select count(*) as numReviews from review where product_id = ${productId}) as c
+    WHERE a.product_id = ${productId} and a.category_id = b.category_id`
     db.query(query, async (err, result) => {
         if (err) {
             res.status(500).send({

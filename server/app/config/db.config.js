@@ -1,6 +1,6 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "Phong18092001",
-    DB: "project"
+    PASSWORD: "Chinchy123",
+    DB: "sentimental_analysis_system"
 };
