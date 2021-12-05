@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
                     res.send({
                         message: "Login successfully",
                         token: token,
-                        userId: results[0].user_id
+                        userInfo: results[0]
                     })
 
                 }
@@ -55,7 +55,7 @@ exports.login = async (req, res) => {
         });
     } catch (error) {
         console.log(error)
-        res.status(401).send({
+        res.send({
 
             errorMessage: 'Username or password is incorrect'
         });
