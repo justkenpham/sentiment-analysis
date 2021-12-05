@@ -8,7 +8,7 @@ export default function AnswerSection() {
   const [comment, setComment] = useState({ name: "", date: "", rating: "", comment: "" });
   useEffect(() => {
     setComment({
-      name: "KENPHAM",
+      name: "KEPHAM",
       date: "14:15 12/13/2021",
       rating: "3",
       comment: "This product is like shit!"
