@@ -20,7 +20,12 @@ module.exports.getReview = async (req, res) => {
 
 exports.postReview = async (req, res) => {
     console.log("request body", req.body)
-    const { review_text, review_time, overall, user_id, product_id } = req.body
+    const { review_text, review_time, user_id, product_id } = req.body
+    let overall
+    if(user_id == 1){
+        overall = null;
+    }
+    else overall = sentiAna.calculateOverall(review_text);
     let insert_data = [review_text, review_time, overall, user_id, product_id]
     console.log(insert_data)
     //Query
