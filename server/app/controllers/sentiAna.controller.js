@@ -31,13 +31,19 @@ exports.calculateOverall =  (review) => {
     review = SW.removeStopwords(review); // remove stop-words
 
     //sentimental score
-    const { SentimentAnalyzer, PorterStemmer } = natural;
-    const analyzer = new SentimentAnalyzer('English', PorterStemmer, 'afinn');
-    let analysis = analyzer.getSentiment(review);
-    analysis = analysis/3*2.5 + 2.5;
-    return analysis;  
+    if(review == ''){
+        return 2.5;
+    }
+    else{
+        const { SentimentAnalyzer, PorterStemmer } = natural;
+        const analyzer = new SentimentAnalyzer('English', PorterStemmer, 'afinn');
+        let analysis = analyzer.getSentiment(review);
+        analysis = analysis/3*2.5 + 2.5;
+        return Math.round(analysis * 10) / 10 ;
+    }
+      
 }
-//console.log(calculateOverall(`This is not good`))
+//console.log(calculateOverall(`what is this`))
 
 
 
