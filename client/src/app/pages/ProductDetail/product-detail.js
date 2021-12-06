@@ -9,7 +9,7 @@ import { getProductDetail } from "../../utils/product.utils";
 import { useLocation } from "react-router-dom";
 import { UserContext } from '../../context/UserContext';
 //
-
+import Header from '../../components/Header';
 export default function ProductDetail(props) {
 
   const location = useLocation();
@@ -57,6 +57,7 @@ export default function ProductDetail(props) {
 
   return (
     <div class="product-detail">
+      <Header />
       <div class="mainpage">
         <div class="product_image">
           <img src={product.image} alt="" />

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import AnswerSection from "./AnswerSection";
 import Sentiment from 'sentiment';
 import Popup from '../Popup/Popup';
 import logo from "../../assets/logo.svg";
 import { getReviewFromBE, postReviewToBE } from '../../utils/review.utils';
 import './InputSection.css'
-
+import { UserContext } from '../../context/UserContext';
 export default function InputSection(props) {
   console.log("Input", props.productid);
-  const userID = (props.useID) ? (props.useID) : (1);
+  const { login, setLogin } = useContext(UserContext)
+  const userID = (login) ? (login.user_id) : (1);
   const sentiment = new Sentiment();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +34,10 @@ export default function InputSection(props) {
   useEffect(() => {
     setSentimentScore(sentiment.analyze(phrase));
   }, [phrase]);
+
+  const handleSentimentalScore = () => {
+
+  }
 
   const Input = async (review) => {
     const { review_text, review_time, overall, user_id, product_id } = review
@@ -64,7 +69,9 @@ export default function InputSection(props) {
     <div className="product-detail__comment">
       <div className="product-detail__comment__input">
         <img src={logo} />
-        <input placeholder="Comment your thoughts..." value={phrase} onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length) / 6 * 5) + 2.5, user_id: userID, product_id: props.productid })} />
+        <input placeholder="Comment your thoughts..."
+          // value={phrase} 
+          onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length) / 6 * 5) + 2.5, user_id: userID, product_id: props.productid })} />
         <button className="submit" onClick={handleSubmitReview}>Submit</button>
         {isOpen && <Popup
           content={<>
