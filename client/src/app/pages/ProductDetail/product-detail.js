@@ -104,8 +104,13 @@ export default function ProductDetail(props) {
         </div>
       </div>
       <InputSection
+<<<<<<< Updated upstream
         productid={productid}
         userID={userId}>
+=======
+      productid= {history_product_id}
+      userID = {userID}>
+>>>>>>> Stashed changes
       </InputSection>
     </div>
   );

@@ -74,6 +74,7 @@ export default function InputSection(props) {
           onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length) / 6 * 5) + 2.5, user_id: userID, product_id: props.productid })} />
         <button className="submit" onClick={handleSubmitReview}>Submit</button>
         {isOpen && <Popup
+<<<<<<< Updated upstream
           content={<>
             <b>Updated!</b>
             <p>Thank you for your review.</p>
@@ -87,6 +88,21 @@ export default function InputSection(props) {
               : <p>Score {sentimentScore.score / sentimentScore.words.length}</p>
             : <p>Score 0</p>
           : <p>Score 0</p>
+=======
+        content={<>
+        <b>Updated!</b>
+        <p>Thank you for your review.</p>
+        </>}
+      handleClose={togglePopup}
+    />}
+        {sentimentScore !== null?
+          sentimentScore.words.length > 0?
+            sentimentScore.score < 0?
+            <p>Score 0</p>
+          :<p>Score {(((sentimentScore.score / sentimentScore.words.length)/6*5)+2.5)}</p> 
+          :<p>Score 0</p>
+          :<p>Score 0</p>
+>>>>>>> Stashed changes
         }
       </div>
       <AnswerSection
