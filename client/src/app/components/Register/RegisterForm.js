@@ -89,7 +89,7 @@ export default function RegisterForm(props) {
                 <input type="submit" value="SIGN UP" />
             </div>
             <div>
-                {user.name != "" ? props.history.push("/login") : null}
+                {user.name != "" ? props.history.push({pathname: '/login', state: {details: 'Register successfully'}}) : null}
             </div>
         </form>
     )
