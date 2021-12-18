@@ -11,6 +11,15 @@ function LoginForm(props) {
   const [details, setDetails] = useState({ name: "", password: "" });
   const [user, setUser] = useState({ name: "", password: "" });
   const [error, setError] = useState("");
+  
+  // Register successfully message
+  let register
+  console.log(props);
+  if (props.location.state === undefined)
+    register = null;
+  else 
+    register = props.location.state.details;
+  
   var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   const Login = async (details) => {
     const response = await loginCheckInBE(details.name, details.password)
@@ -48,6 +57,7 @@ function LoginForm(props) {
     <form className="form" onSubmit={submitHandler}>
       <div className="form-inner">
         <h2>Login</h2>
+        <p className = "register">{register}</p>
         {error != "" ? <p className="error">{error}</p> : ""}
         <div className="form-group">
           <label htmlFor="name">Username</label>
