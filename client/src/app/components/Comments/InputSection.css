@@ -6,6 +6,7 @@
     background-color: #f1425c75;
     padding-left: 50px;
     padding-right: 50px;
+    padding-bottom: 50px;
 }
 .product-detail__comment>div{
     /* flex-direction: row; */

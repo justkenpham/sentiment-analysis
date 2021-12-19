@@ -16,7 +16,7 @@ const AnswerSection = props => {
   const displayDate = (reviewTime) => {
     if (reviewTime === undefined) return
     const displayDate = reviewTime.slice(0, 10)
-    const displayTime = reviewTime.slice(11, reviewTime.length - 1)
+    const displayTime = reviewTime.slice(11, reviewTime.length - 5)
     return displayDate + " " + displayTime
   }
 

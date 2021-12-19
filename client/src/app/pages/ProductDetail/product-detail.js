@@ -5,6 +5,7 @@ import fb from "../../assets/fb.png"
 import tw from "../../assets/tw.png";
 import InputSection from "../../components/Comments/InputSection";
 import Rating from "../../components/Rating/rating";
+import Footer from "./product-detail-footer"
 import { getProductDetail } from "../../utils/product.utils";
 import { useLocation } from "react-router-dom";
 import { UserContext } from '../../context/UserContext';
@@ -107,6 +108,7 @@ export default function ProductDetail(props) {
         productid={productid}
         userID={userId}>
       </InputSection>
+      <Footer />
     </div>
   );
 };

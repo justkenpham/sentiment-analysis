@@ -1,3 +1,15 @@
+@keyframes move {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(0, 4rem);
+    }
+    100% {
+      transform: translate(0, 0);
+    }  
+  }
+
 .product_detail{
     background-color: rgb(255, 255, 255);
 }
@@ -18,7 +30,7 @@
 .product_image {
     max-width: auto;
     max-height: 1000px;
-    padding-top: 58px;
+    padding-top: 30px;
     display: flex;
     justify-content: center;
 }
@@ -29,6 +41,11 @@
     max-height: 80%;
     width: auto;
     margin: auto;
+    transform: translate(0, 0);
+    animation-name: move;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 
 .product_rightSide{
