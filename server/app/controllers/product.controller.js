@@ -3,7 +3,7 @@ const db = require('../models/database')
 module.exports.searchProduct = async (req, res) => {
     console.log("request queries  ", req.query)
     let productName = " '%" + req.query.product_name + "%' "
-    let query = `SELECT distinct * FROM product WHERE product_name LIKE  ${productName} UNION SELECT DISTINCT * FROM product WHERE description LIKE  ${productName} union select distinct d.product_id, product_name, description, price, image, rating, d.category_id from product d, category c where c.category_id = d.category_id and c.category_name like ${productName}`
+    let query = `SELECT distinct * FROM product WHERE product_name LIKE  ${productName} UNION SELECT DISTINCT * FROM product WHERE description LIKE  ${productName} union select distinct d.product_id, product_name, description, price, image, rating, d.category_id from product d, category c where c.category_id = d.category_id and c.category_name like ${productName} union select * from product where match(product_name,description) against( ${productName} IN NATURAL LANGUAGE MODE) `
     db.query(query, async (err, result) => {
         if (err) {
             res.status(500).send({

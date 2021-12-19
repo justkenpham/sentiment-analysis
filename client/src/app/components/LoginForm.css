@@ -129,4 +129,11 @@ form .form-inner input[type="submit"]:hover,
 .error{
     color: red;
 }
+.register{
+    color: #2E8B57;
+}
+
+.image{
+    height: 200px;
+}
 

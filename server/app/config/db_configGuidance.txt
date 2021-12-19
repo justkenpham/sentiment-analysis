@@ -1,0 +1,11 @@
+The db.config.js has been deleted as it is tracked by git and .gitignore does not apply to tracked files
+To implement connection to database we need 
+
+If your repo does not have a db.config.js file, create as one with the following code:
+
+module.exports = {
+    HOST: "localhost",
+    USER: "root",
+    PASSWORD: "",
+    DB: "sentimental_analysis_system"
+};

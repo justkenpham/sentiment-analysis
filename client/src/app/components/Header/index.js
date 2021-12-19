@@ -25,7 +25,7 @@ const Header = (props) => {
     return (
         <div className="ctn">
             <div className="ctn__info">
-                <img className="ctn__info__logo" src={AppLogo} />
+                <img className="ctn__info__logo" src={AppLogo} onClick={e => history.push("/homepage")}/>
             </div>
             <SearchBar
                 onSearchCategory={onSearchCategory}
