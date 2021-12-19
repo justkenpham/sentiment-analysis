@@ -57,6 +57,7 @@ header ul li a{
 
 header ul li a:hover{
     color: #f1425d;
+    transition: 0.5s;
 }
 
 .content{
@@ -76,3 +77,23 @@ header ul li a:hover{
 .content .text h2{
     text-transform: uppercase;
 }
+
+.sci{
+    top:0;
+    left:0;
+    margin-left: 285px;
+    width:40%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.sci li:hover{
+    transform: translate(5px,-5px);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
