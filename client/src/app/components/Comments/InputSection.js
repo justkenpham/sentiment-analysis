@@ -72,7 +72,17 @@ export default function InputSection(props) {
   return (
     <div className="product-detail__comment">
       <div className="product-detail__comment__input">
-        <img src={avatar} />
+      {
+          sentimentScore ?
+            sentimentScore.score === 0 ?
+              <img src={normal} alt="normal" />
+              :
+              sentimentScore.score > 0 ?
+                <img src={positive} alt="positive" />
+                :
+                <img src={negative} alt="negative" />
+            : ''
+        }
         <input placeholder="Comment your thoughts..."
           // value={phrase} 
           onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length) / 6 * 5) + 2.5, user_id: userID, product_id: props.productid })} />
@@ -84,17 +94,6 @@ export default function InputSection(props) {
           </>}
           handleClose={togglePopup}
         />}
-        {
-          sentimentScore ?
-            sentimentScore.score === 0 ?
-              <img src={normal} alt="normal" />
-              :
-              sentimentScore.score > 0 ?
-                <img src={positive} alt="positive" />
-                :
-                <img src={negative} alt="negative" />
-            : ''
-        }
       </div>
       <AnswerSection
         product_id={props.productid}>

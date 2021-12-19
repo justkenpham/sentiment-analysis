@@ -16,13 +16,14 @@
 	position: relative;
 	z-index: 99;
 	float: left;
-	border-radius: 20px;
-    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),
-        -4px -4px 6px 0 rgba(116, 125, 136, .2),
-        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
-        inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+	border-radius: 32px;
+	box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),        -4px -4px 6px 0 rgba(116, 125, 136, .2),        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),        inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 	overflow: hidden;
-    margin-right: 10px;
+	margin-right: 10px;
+	-webkit-border-radius: 32px;
+	-moz-border-radius: 32px;
+	-ms-border-radius: 32px;
+	-o-border-radius: 32px;
 }
 
 .commentprod .commentavatar img {

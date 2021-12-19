@@ -18,16 +18,15 @@
 .product-detail__comment__input>img{
     width: 60px;
     height: 60px;
-    border-radius: 20px;
-    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),
-        -4px -4px 6px 0 rgba(116, 125, 136, .2),
-        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
-        inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-}
-
-.product-detail__comment__input>img:first-child{
+    border-radius: 32px;
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),        -4px -4px 6px 0 rgba(116, 125, 136, .2),        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),        inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
     margin-right: 10px;
 }
+
 .product-detail__comment__input>input{
     background: #fff;
     height: 50px;
@@ -52,6 +51,7 @@
     font-size: 14px;
     display: block;
 }
+
 .submit{
     font-size: 14px;
     display: block;
