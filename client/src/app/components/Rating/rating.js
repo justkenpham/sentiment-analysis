@@ -56,7 +56,7 @@ export default function Rating(props) {
         </span>
         <span class="block_rating__average">{rating}</span>
         <span class="block_rating__reviews">
-            <a href="#AnswerSection">{numReviews + ' reviews'}</a>
+        {numReviews + ' reviews'}
         </span>
     </div>
     );

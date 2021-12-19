@@ -1,58 +1,88 @@
-.product-detail__comment__answers{
-    /* align-items: center; */
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    text-align: left;
-    /* justify-content: left; */
-    width:100%;
-    bottom: 20px;
-    margin: 0;
-    padding: 0;
+.commentcontainer {
+	width: 100%;
 }
-.product-detail__comment__answers>div{
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
+.commentprod {
+	margin-top: 30px;
+	position: relative;
+    margin-bottom: 15px;
+	display: block;
+	position: relative;
 }
-.product-detail__comment__answers>div>p{
-    margin-left: 10px;
-    font-size: 14px;
-    color: #000;
-}
-.product-detail__comment__answers>h4{
-    /* border: 1px solid orange; */
-    text-align: left;
-    padding-left: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #000;
-}
-.product-detail__comment__answers>div>img{
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+
+.commentprod .commentavatar {
+	width: 60px;
+	height: 60px;
+	position: relative;
+	z-index: 99;
+	float: left;
+	border-radius: 20px;
     box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),
         -4px -4px 6px 0 rgba(116, 125, 136, .2),
         inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
         inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+	overflow: hidden;
+    margin-right: 10px;
 }
 
-.date{
-    padding-left: 50px;
-    color: rgb(34, 34, 34);
-    font-size: 14px;
-    opacity: 0.9; 
-    margin-top: 0;
+.commentprod .commentavatar img {
+	width: 100%;
+	height: 100%;
 }
-.score{
-    padding-left: 50px;
-    color: rgb(34, 34, 34);
-    font-size: 14px;
-    opacity: 0.9; 
-    margin-top: 0;
+
+.commentprod .commentbox{
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: auto;
+    width: 95%;
+	position: relative;
+}
+
+.commentbox .commenthead {
+	background: #FCFCFC;
+	padding: 10px 12px;
+	border-bottom: 1px solid #c7c6c6;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+    text-align: center;
+}
+
+.commentbox .commentname {
+	color: #000;
+	font-size: 18px;
+	font-weight: 700;
+	float: left;
+	margin-right: 10px;
+}
+
+.commentbox .commenthead span {
+	float: left;
+	color: #999;
+	font-size: 13px;
+	position: relative;
+    top: 2px;
+}
+
+.commentbox .commentscore {
+	float: right;
+	margin-left: 14px;
+	position: relative;
+	top: 2px;
+	color: #A6A6A6;
+}
+
+.commentbox .commentcontent {
+	background: #FFF;
+	padding: 12px;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+    text-align: left;
 }
 

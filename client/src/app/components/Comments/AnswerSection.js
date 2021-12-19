@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/logo.svg';
+import avatar from '../../assets/profile.png';
+import negative from '../../assets/angry.png';
+import normal from '../../assets/normal.png';
+import positive from '../../assets/happy.png';
 import { getReviewFromBE, postReviewToBE } from '../../utils/review.utils';
 
 import "./AnswerSection.css";
@@ -21,20 +24,39 @@ const AnswerSection = props => {
   }
 
   return (
-    <section className='review'>
-      {review ? (review.map((prod) => (
-        <div className="product-detail__comment__answers">
-          <div>
-            <img src={logo}></img>
-            <p>{prod.username}</p>
+    <div className='commentcontainer'>
+      <div className='commentlist'>
+        {review ? (review.map((prod) => (
+          <div className="commentprod">
+            <div class="commentavatar">
+              {
+              prod.overall ?
+                prod.overall > 3.9 ?
+                  <img src={positive} alt="normal" />
+                  :
+                  prod.overall > 2.5 ?
+                    <img src={normal} alt="positive" />
+                    :
+                    <img src={negative} alt="negative" />
+                : <img src={negative} alt="negative" />
+              }
           </div>
-          <p className="date">{"Created at " + displayDate(prod.review_time)}</p>
-          <p className="score">{"Score: " + prod.overall}</p>
-          <h4 style={{ fontWeight: "normal" }}>{prod.review_text}</h4>
-        </div>
-      ))) : null}
-    </section>
+            <div class="commentbox">
+              <div class="commenthead">
+                <p class="commentname">{prod.username}</p>
+                <span>{displayDate(prod.review_time)}</span>
+                <p className="commentscore">{"Score: " + prod.overall}</p>
+              </div>
+              <div class="commentcontent">
+                {prod.review_text}
+              </div>
+            </div>
+          </div>
+        ))) : null}
+      </div>
+    </div>
   )
 }
 
 export default AnswerSection;
+

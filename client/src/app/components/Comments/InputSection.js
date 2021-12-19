@@ -2,10 +2,14 @@ import React, { useEffect, useState, useContext } from 'react';
 import AnswerSection from "./AnswerSection";
 import Sentiment from 'sentiment';
 import Popup from '../Popup/Popup';
-import logo from "../../assets/logo.svg";
+import avatar from "../../assets/profile.png";
+import negative from '../../assets/angry.png';
+import normal from '../../assets/normal.png';
+import positive from '../../assets/happy.png';
 import { getReviewFromBE, postReviewToBE } from '../../utils/review.utils';
 import './InputSection.css'
 import { UserContext } from '../../context/UserContext';
+
 export default function InputSection(props) {
   console.log("Input", props.productid);
   const { login, setLogin } = useContext(UserContext)
@@ -68,7 +72,7 @@ export default function InputSection(props) {
   return (
     <div className="product-detail__comment">
       <div className="product-detail__comment__input">
-        <img src={logo} />
+        <img src={avatar} />
         <input placeholder="Comment your thoughts..."
           // value={phrase} 
           onInput={e => setPhrase(e.target.value)} onChange={e => setReview({ ...review, review_text: e.target.value, review_time: currentDate, overall: ((sentimentScore.score / sentimentScore.words.length) / 6 * 5) + 2.5, user_id: userID, product_id: props.productid })} />
@@ -80,13 +84,16 @@ export default function InputSection(props) {
           </>}
           handleClose={togglePopup}
         />}
-        {sentimentScore !== null ?
-          sentimentScore.words.length > 0 ?
-            sentimentScore.score < 0 ?
-              <p>Score 0</p>
-              : <p>Score {sentimentScore.score / sentimentScore.words.length}</p>
-            : <p>Score 0</p>
-          : <p>Score 0</p>
+        {
+          sentimentScore ?
+            sentimentScore.score === 0 ?
+              <img src={normal} alt="normal" />
+              :
+              sentimentScore.score > 0 ?
+                <img src={positive} alt="positive" />
+                :
+                <img src={negative} alt="negative" />
+            : ''
         }
       </div>
       <AnswerSection
