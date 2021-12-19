@@ -2,8 +2,7 @@ import React from 'react'
 import "./HomePage.css"
 import AppLogo from '../assets/icon/brand.png'
 import AppImage from '../assets/sentiment-analysis.png'
-import Facebook from '../assets/fb.png'
-import Twitter from '../assets/tw.png'
+import Footer from "./ProductDetail/product-detail-footer"
 
 import { useHistory } from 'react-router-dom'
 

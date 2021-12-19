@@ -55,6 +55,10 @@ header ul li a{
     cursor: pointer;
 }
 
+header ul li a:hover{
+    color: #f1425d;
+}
+
 .content{
     position: absolute;
     /* width: 95%; */
