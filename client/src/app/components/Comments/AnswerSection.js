@@ -16,6 +16,9 @@ const AnswerSection = props => {
     getReviewFromBE(productId).then(res => setReview(res))
     console.log("Inside useEffect", review)
   }, [])
+  useEffect(() => {
+    setReview(prevState => [...prevState, props.newComment])
+  }, [props.newComment])
   const displayDate = (reviewTime) => {
     if (reviewTime === undefined) return
     const displayDate = reviewTime.slice(0, 10)
@@ -30,17 +33,17 @@ const AnswerSection = props => {
           <div className="commentprod">
             <div class="commentavatar">
               {
-              prod.overall ?
-                prod.overall > 3.9 ?
-                  <img src={positive} alt="normal" />
-                  :
-                  prod.overall > 2.5 ?
-                    <img src={normal} alt="positive" />
+                prod.overall ?
+                  prod.overall > 3.9 ?
+                    <img src={positive} alt="normal" />
                     :
-                    <img src={negative} alt="negative" />
-                : <img src={negative} alt="negative" />
+                    prod.overall > 2.5 ?
+                      <img src={normal} alt="positive" />
+                      :
+                      <img src={negative} alt="negative" />
+                  : <img src={negative} alt="negative" />
               }
-          </div>
+            </div>
             <div class="commentbox">
               <div class="commenthead">
                 <p class="commentname">{prod.username}</p>

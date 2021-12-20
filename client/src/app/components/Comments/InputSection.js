@@ -22,7 +22,7 @@ export default function InputSection(props) {
   const [phrase, setPhrase] = useState('');
   const [sentimentScore, setSentimentScore] = useState(null);
   const [currentDate, setCurrentDate] = useState('');
-
+  const [newComment, setNewComment] = useState('');
   useEffect(() => {
     var date = new Date().getDate(); //Current Date
     var month = new Date().getMonth() + 1; //Current Month
@@ -48,6 +48,7 @@ export default function InputSection(props) {
     console.log(" Input function", review)
     const { review_text, review_time, overall, user_id, product_id } = review
     console.log(review)
+    setNewComment(review)
     const response = await postReviewToBE(review)
     console.log("Register response", response)
   }
@@ -113,7 +114,9 @@ export default function InputSection(props) {
         />}
       </div>
       <AnswerSection
-        product_id={props.productid}>
+        product_id={props.productid}
+        newComment={newComment}>
+
       </AnswerSection>
     </div>
   );
