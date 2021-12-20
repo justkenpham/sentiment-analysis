@@ -13,10 +13,11 @@ import { UserContext } from '../../context/UserContext';
 export default function InputSection(props) {
   console.log("Input", props.productid);
   const { login, setLogin } = useContext(UserContext)
-  const userID = (login) ? (login.user_id) : (1);
+  const userID = (login) ? (login.user_id) : (null);
   const sentiment = new Sentiment();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoginRemindOpen, setIsLoginRemindOpen] = useState(false);
   const [review, setReview] = useState({ review_text: "", review_time: "", overall: "", user_id: "", product_id: "" });
   const [phrase, setPhrase] = useState('');
   const [sentimentScore, setSentimentScore] = useState(null);
@@ -44,6 +45,7 @@ export default function InputSection(props) {
   }
 
   const Input = async (review) => {
+    console.log(" Input function", review)
     const { review_text, review_time, overall, user_id, product_id } = review
     console.log(review)
     const response = await postReviewToBE(review)
@@ -59,8 +61,16 @@ export default function InputSection(props) {
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
-
+  const toggleLoginRemindPopup = () => {
+    setIsLoginRemindOpen(!isLoginRemindOpen);
+  }
   const handleSubmitReview = (e) => {
+    if (userID === null) {
+      toggleLoginRemindPopup();
+      return;
+    }
+
+
     console.log("phrase length", phrase.length)
     if (phrase.length !== 0) {
       submitHandler(e); togglePopup();
@@ -72,7 +82,7 @@ export default function InputSection(props) {
   return (
     <div className="product-detail__comment">
       <div className="product-detail__comment__input">
-      {
+        {
           sentimentScore ?
             sentimentScore.score === 0 ?
               <img src={normal} alt="normal" />
@@ -93,6 +103,13 @@ export default function InputSection(props) {
             <p>Thank you for your review.</p>
           </>}
           handleClose={togglePopup}
+        />}
+        {isLoginRemindOpen && <Popup
+          content={<>
+            <b>Please login first to comment!</b>
+            <p> Click <a href='/login'>here</a> to login</p>
+          </>}
+          handleClose={toggleLoginRemindPopup}
         />}
       </div>
       <AnswerSection

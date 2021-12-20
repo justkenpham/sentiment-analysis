@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server",
-    "start": "nodemon server.js"
+    "start": "pm2 start server.js --exp-backoff-restart-delay=100 --watch",
+    "checklog": "pm2 logs",
+    "stop": "pm2 stop all"
   },
   "keywords": [
     "nodejs",
@@ -21,11 +23,11 @@
     "apos-to-lex-form": "^1.0.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "forever": "^4.0.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "natural": "^5.1.11",
     "nodemon": "^2.0.15",
+    "pm2": "^5.1.2",
     "sequelize": "^6.12.0-alpha.1",
     "sequelize-auto": "^0.8.5",
     "sequelize-cli": "^6.3.0",

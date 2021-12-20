@@ -16,7 +16,7 @@ export default function ProductDetail(props) {
   const location = useLocation();
   const productid = location.state.product_id;
   const { login, setLogin } = useContext(UserContext)
-  const userId = (login) ? (login.user_id) : (11)
+  const userId = (login) ? (login.user_id) : (1)
   console.log("User id", userId)
   const PathName = window.location.href;
   console.log("history", props.history)
@@ -61,7 +61,7 @@ export default function ProductDetail(props) {
       {/* <Header /> */}
       <div class="mainpage">
         <div class="product_image">
-          <img src={product.image} alt="" />
+          <img src={product.image} alt="" max-width="100%" height="auto" />
         </div>
         <div class="product_rightSide">
           <p class="block_model">
