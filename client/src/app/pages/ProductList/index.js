@@ -2,24 +2,24 @@ import React, { useEffect } from 'react';
 import Header from '../../components/Header';
 import { ProductFilter } from '../../constants/Product';
 import { getAllProducts } from '../../utils/product.utils';
-import {SortRating } from '../../utils/sort';
-
+import { SortRating } from '../../utils/sort';
+import Footer from '../ProductDetail/product-detail-footer';
 import "./index.css"
 
 const ProductList = props => {
 
     const [productList, setProductList] = React.useState([]);
     const [originalProductList, setOriginalProductList] = React.useState([]);
-    
+
     useEffect(() => {
         getAllProducts().then(res => {
             setProductList(res);
             setOriginalProductList(res);
         })
-    },[])
+    }, [])
 
     const onViewProduct = (prod) => {
-        props.history.push("/product-detail",{
+        props.history.push("/product-detail", {
             product_id: prod.product_id
         })
     }
@@ -27,26 +27,26 @@ const ProductList = props => {
     const onFilteringProductBasedOnPrice = (e) => {
         let range = e.target.value;
         let searchedProducts = [];
-        
-        if(range == ProductFilter.tag.price.Lowest){
-            for(let i = 0; i < originalProductList.length; i++){
-                if(originalProductList[i].price < 100){
+
+        if (range == ProductFilter.tag.price.Lowest) {
+            for (let i = 0; i < originalProductList.length; i++) {
+                if (originalProductList[i].price < 100) {
                     searchedProducts.push(originalProductList[i])
                 }
             }
-        }else if(range == ProductFilter.tag.price.Medium){
-            for(let i = 0; i < originalProductList.length; i++){
-                if(originalProductList[i].price > 100 && originalProductList[i].price < 500){
+        } else if (range == ProductFilter.tag.price.Medium) {
+            for (let i = 0; i < originalProductList.length; i++) {
+                if (originalProductList[i].price > 100 && originalProductList[i].price < 500) {
                     searchedProducts.push(originalProductList[i])
                 }
             }
-        }else if(range == ProductFilter.tag.price.Biggest){
-            for(let i = 0; i < originalProductList.length; i++){
-                if(originalProductList[i].price > 500){
+        } else if (range == ProductFilter.tag.price.Biggest) {
+            for (let i = 0; i < originalProductList.length; i++) {
+                if (originalProductList[i].price > 500) {
                     searchedProducts.push(originalProductList[i])
                 }
             }
-        }else{
+        } else {
             let tempList = [].concat(originalProductList);
             setProductList(tempList);
             return;
@@ -58,10 +58,10 @@ const ProductList = props => {
         let range = e.target.value;
         let searchedProducts = [].concat(originalProductList);
 
-        if(range !== "🤔 Rating"){
+        if (range !== "🤔 Rating") {
             SortRating(searchedProducts, range)
         }
-        else{
+        else {
             let tempList = [].concat(originalProductList);
             setProductList(tempList);
             return;
@@ -69,12 +69,12 @@ const ProductList = props => {
         setProductList(searchedProducts);
     }
 
-    return(
+    return (
         <>
             <Header
                 setProductList={setProductList}
             />
-            <div className="pl-container">
+            <div className="pl-container" style={{ marginBottom: "100px" }}>
                 <div className="pl-filter">
                     <p>Filter</p>
                     <div className="pl-select">
@@ -105,9 +105,10 @@ const ProductList = props => {
                                 </div>
                             </div>
                         </div>
-                    ))) : null }
+                    ))) : null}
                 </section>
             </div>
+            <Footer />
         </>
     )
 }
