@@ -43,11 +43,10 @@ export default function InputSection(props) {
   const handleSentimentalScore = () => {
 
   }
-
   const Input = async (review) => {
     console.log(" Input function", review)
     const { review_text, review_time, overall, user_id, product_id } = review
-    console.log(review)
+    review["username"] = login.username
     setNewComment(review)
     const response = await postReviewToBE(review)
     console.log("Register response", response)
@@ -108,7 +107,7 @@ export default function InputSection(props) {
         {isLoginRemindOpen && <Popup
           content={<>
             <b>Please login first to comment!</b>
-            <p> Click <a href='/login'>here</a> to login</p>
+            <p> Please <a href='/login'>login</a> or <a href='/register'>register</a> first</p>
           </>}
           handleClose={toggleLoginRemindPopup}
         />}

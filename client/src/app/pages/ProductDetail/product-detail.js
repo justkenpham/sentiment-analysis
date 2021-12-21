@@ -7,12 +7,12 @@ import InputSection from "../../components/Comments/InputSection";
 import Rating from "../../components/Rating/rating";
 import Footer from "./product-detail-footer"
 import { getProductDetail } from "../../utils/product.utils";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { UserContext } from '../../context/UserContext';
 //
-// import Header from '../../components/Header';
+import Header from '../../components/Header';
 export default function ProductDetail(props) {
-
+  const history = useHistory()
   const location = useLocation();
   const productid = location.state.product_id;
   const { login, setLogin } = useContext(UserContext)
@@ -58,7 +58,7 @@ export default function ProductDetail(props) {
 
   return (
     <div class="product-detail">
-      {/* <Header /> */}
+      <Header setProductList={e => history.push("/product-list")} />
       <div class="mainpage">
         <div class="product_image">
           <img src={product.image} alt="" max-width="100%" height="auto" />

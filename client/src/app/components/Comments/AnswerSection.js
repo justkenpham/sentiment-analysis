@@ -11,7 +11,7 @@ const AnswerSection = props => {
   console.log("Answer", props.product_id);
   const [productId, setProductId] = useState(props.product_id);
   const [review, setReview] = useState([{ name: "", review: "", date: "", score: "" }]);
-
+  console.log("new Comment co cl j", props.newComment)
   useEffect(() => {
     getReviewFromBE(productId).then(res => setReview(res))
     console.log("Inside useEffect", review)
@@ -48,7 +48,7 @@ const AnswerSection = props => {
               <div class="commenthead">
                 <p class="commentname">{prod.username}</p>
                 <span>{displayDate(prod.review_time)}</span>
-                <p className="commentscore">{"Score: " + prod.overall}</p>
+                {/* <p className="commentscore">{"Score: " + prod.overall}</p> */}
               </div>
               <div class="commentcontent">
                 {prod.review_text}
