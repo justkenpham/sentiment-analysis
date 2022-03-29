@@ -16,9 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req, res) => {
-    res.json({ message: "This is what the fuck bro." });
-});
+// app.get("/", (req, res) => {
+//     res.json({ message: "This is what the fuck bro." });
+// });
 
 const reviewRoute = require('./app/routes/review.route');
 app.use("/reviews", reviewRoute);
