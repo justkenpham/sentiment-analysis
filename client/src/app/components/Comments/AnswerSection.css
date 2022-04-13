@@ -1,0 +1,47 @@
+.product-detail__comment__answers{
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    text-align: left;
+    /* justify-content: left; */
+    width:100%;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+.product-detail__comment__answers>div{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.product-detail__comment__answers>div>p{
+    margin-left: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+.product-detail__comment__answers>h4{
+    /* border: 1px solid orange; */
+    text-align: left;
+    padding-left: 50px;
+    margin-top: 0;
+    font-size: 16px;
+    color: #fff;
+}
+.product-detail__comment__answers>div>img{
+    border: 1px solid grey;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    /* margin-left: 20px; */
+}
+
+.date{
+    padding-left: 50px;
+    color: rgb(192, 185, 185);
+    font-size: 14px;
+    opacity: 0.9; 
+    margin-top: 0;
+}
+

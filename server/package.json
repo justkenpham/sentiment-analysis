@@ -1,0 +1,35 @@
+{
+  "name": "sentimental-analysis",
+  "version": "1.0.0",
+  "description": "This is sentimental project for group 12",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize",
+    "rest",
+    "api"
+  ],
+  "author": "htd2k1",
+  "license": "ISC",
+  "dependencies": {
+    "apos-to-lex-form": "^1.0.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "forever": "^4.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "natural": "^5.1.11",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.12.0-alpha.1",
+    "sequelize-auto": "^0.8.5",
+    "sequelize-cli": "^6.3.0",
+    "spelling-corrector": "^3.0.0",
+    "stopword": "^1.0.11"
+  }
+}
